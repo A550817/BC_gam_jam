@@ -1,0 +1,7 @@
+[gd_resource type="ShaderMaterial" format=3 uid="uid://bp1tlf0hjaysu"]
+
+[ext_resource type="Shader" uid="uid://bu2q27wjac8fd" path="res://shaders/player.gdshader" id="1_dv00f"]
+
+[resource]
+shader = ExtResource("1_dv00f")
+shader_parameter/radius = 0.5
