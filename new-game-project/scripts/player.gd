@@ -1,7 +1,8 @@
 class_name Player extends CharacterBody2D
 
 @export var speed: int = 100
- 
+@export var radius: float = 40.0
+@export var color: Color = Color.CYAN
 
 #region /// StateMachineVariables
 var states: Array = [PlayerState]
@@ -41,7 +42,7 @@ func initialize_states():
 	states = []
 	
 	# gather all states
-	for state in $states.get_children():
+	for state in $States.get_children():
 		if state is PlayerState:
 			states.append(state)
 			state.player = self
@@ -70,3 +71,7 @@ func change_state(new_state: PlayerState):
 	current_state.enter()
 	states.resize(3)
 #endregion
+
+
+func _draw() -> void:
+	draw_circle(Vector2.ZERO, radius, color)
