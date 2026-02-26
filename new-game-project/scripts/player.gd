@@ -1,10 +1,14 @@
 class_name Player extends CharacterBody2D
 
 
+@onready var sprite_2d: Sprite2D = $Sprite2D
+
 @export var drag_strength: float = 0.5
 @export var speed: int = 100
 @export var radius: float = 50.0
 @export var color: Color = Color.CYAN
+@export var is_controller: bool = false
+@export var texture: CompressedTexture2D
 
 #region /// StateMachineVariables
 var states: Array = [PlayerState]
@@ -24,6 +28,8 @@ var health: int = max_health
 
 
 func _ready() -> void:
+	if texture:
+		sprite_2d.texture = texture
 	initialize_states()
 
 func _unhandled_input(event: InputEvent) -> void:
