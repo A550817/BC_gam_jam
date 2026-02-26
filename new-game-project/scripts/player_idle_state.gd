@@ -7,9 +7,10 @@ func init():
 
 
 # What happens when we enter the state
-func enter():
+func enter() -> PlayerState:
 	#player.velocity = Vector2.ZERO
 	ray_cast_2d.enabled = false
+	return null
 
 
 # What happens when we exit the the state

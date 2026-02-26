@@ -1,6 +1,10 @@
 [gd_scene format=3 uid="uid://c5tch4a2pi7am"]
 
 [ext_resource type="PackedScene" uid="uid://be8qbmt0fe144" path="res://scenes/player.tscn" id="1_hddm4"]
+[ext_resource type="Texture2D" uid="uid://4q335xxs2p" path="res://icon.svg" id="2_qchbg"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_hddm4"]
+size = Vector2(635, 20)
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_hddm4"]
 radius = 53.366657
@@ -8,9 +12,27 @@ radius = 53.366657
 [node name="Playground" type="Node2D" unique_id=2036895998]
 
 [node name="Player" parent="." unique_id=1030372719 instance=ExtResource("1_hddm4")]
+position = Vector2(491, 329)
+
+[node name="StaticBody2D3" type="StaticBody2D" parent="." unique_id=441174328]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D3" unique_id=729204340]
+position = Vector2(1131, 689)
+shape = SubResource("RectangleShape2D_hddm4")
 
 [node name="StaticBody2D" type="StaticBody2D" parent="." unique_id=2016624350]
 position = Vector2(566, 452)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D" unique_id=1599853476]
 shape = SubResource("CircleShape2D_hddm4")
+
+[node name="StaticBody2D2" type="StaticBody2D" parent="." unique_id=2034455872]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D2" unique_id=2052463815]
+position = Vector2(572, 75)
+shape = SubResource("RectangleShape2D_hddm4")
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=452247746]
+position = Vector2(128, 265)
+scale = Vector2(0.140625, 0.140625)
+texture = ExtResource("2_qchbg")

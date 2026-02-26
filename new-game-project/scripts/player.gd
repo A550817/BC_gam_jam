@@ -1,7 +1,9 @@
 class_name Player extends CharacterBody2D
 
+
+@export var drag_strength: float = 0.5
 @export var speed: int = 100
-@export var radius: float = 40.0
+@export var radius: float = 50.0
 @export var color: Color = Color.CYAN
 
 #region /// StateMachineVariables
@@ -29,12 +31,18 @@ func _unhandled_input(event: InputEvent) -> void:
 
 
 func _physics_process(delta: float) -> void:
+	velocity *= clamp(1.0 - drag_strength * delta, 0.0, 1.0)
 	change_state(current_state.physics_process(delta))
-	move_and_slide()
+	var collision := move_and_collide(velocity*delta);
+	if collision:
+		velocity = velocity.bounce(collision.get_normal())
+		change_state(%IdleState)
+	
 
 
 func _process(delta: float) -> void:
 	change_state(current_state.process(delta))
+	
 
 
 #region /// State Machine Setup
@@ -68,10 +76,10 @@ func change_state(new_state: PlayerState):
 		current_state.exit()
 	
 	states.push_front(new_state)
-	current_state.enter()
+	change_state(current_state.enter())
 	states.resize(3)
 #endregion
 
 
 func _draw() -> void:
-	draw_circle(Vector2.ZERO, radius, color)
+	pass

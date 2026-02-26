@@ -7,8 +7,8 @@ func init():
 
 
 # What happens when we enter the state
-func enter():
-	pass
+func enter() -> PlayerState:
+	return null
 
 
 # What happens when we exit the the state

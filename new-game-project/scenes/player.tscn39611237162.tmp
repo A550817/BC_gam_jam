@@ -12,7 +12,6 @@ radius = 40.0
 
 [node name="CharacterBody2D" type="CharacterBody2D" unique_id=388737432]
 script = ExtResource("1_3vyb7")
-drag_strength = 1.0
 
 [node name="Sprite2D" type="Sprite2D" parent="." unique_id=1340784801]
 material = ExtResource("2_qlg0r")

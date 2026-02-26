@@ -3,8 +3,9 @@ class_name PlayerStateTether extends PlayerState
 
 var tether_point: Vector2 = Vector2.ZERO
 var tether_length: float = 100.0
-var pull_strength: float = 200.0
-var drag_strength: float = 0.5
+@export var max_tether_length: float = 1000.0
+@export var pull_strength: float = 100.0
+@export var constraint_strength: float = 2
 
 # What happens when this state is initialized
 func init():
@@ -12,10 +13,11 @@ func init():
 
 
 # What happens when we enter the state
-func enter():
+func enter() -> PlayerState:
 	ray_cast_2d.enabled = true
 	var mouse_global = player.get_global_mouse_position()
-	ray_cast_2d.target_position = mouse_global - ray_cast_2d.global_position
+	var mouse_vec = mouse_global
+	ray_cast_2d.target_position = (mouse_global - ray_cast_2d.global_position).normalized()*max_tether_length
 	ray_cast_2d.force_raycast_update()
 
 	if ray_cast_2d.is_colliding():
@@ -23,6 +25,7 @@ func enter():
 		tether_length = player.global_position.distance_to(tether_point)
 	else:
 		return idle_state
+	return null
 
 
 # What happens when we exit the the state
@@ -32,7 +35,7 @@ func exit():
 
 # Handle input
 func handle_input(event: InputEvent) -> PlayerState:
-	if event.is_action_pressed("click"):
+	if event.is_action_released("click"):
 		return idle_state
 	return null
 
@@ -42,22 +45,18 @@ func process(delta: float) -> PlayerState:
 
 
 func physics_process(delta: float) -> PlayerState:
+	ray_cast_2d.target_position = tether_point - ray_cast_2d.global_position
+	ray_cast_2d.force_raycast_update()
+	
 	var to_anchor = tether_point - player.global_position
 	var distance = to_anchor.length()
 	var direction = to_anchor.normalized()
-
-	# Strong pull toward anchor (this creates movement)
-	player.velocity += direction * pull_strength * delta
-
-	# Rope length constraint (keeps swing radius)
-	if distance > tether_length:
-		player.global_position = tether_point - direction * tether_length
-
-		# Remove outward velocity so it doesn't explode
-		var outward_velocity = direction * player.velocity.dot(direction)
-		player.velocity -= outward_velocity
-
-	# Drag
-	player.velocity *= clamp(1.0 - drag_strength * delta, 0.0, 1.0)
-
+	tether_length = max(0, tether_length - (pull_strength * delta))
+	var targetpos = tether_point - direction * tether_length
+	
+	var colinear_pull = abs(tether_length - distance) * direction * delta * 100
+	player.velocity += colinear_pull
+		
+	$"../../../Sprite2D".position = targetpos
+	
 	return null
