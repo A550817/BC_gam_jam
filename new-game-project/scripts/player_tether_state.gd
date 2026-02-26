@@ -14,8 +14,8 @@ func init():
 # What happens when we enter the state
 func enter():
 	ray_cast_2d.enabled = true
-	var mouse = get_tree().get_root().get_mouse_position()
-	ray_cast_2d.target_position = mouse
+	var mouse_global = player.get_global_mouse_position()
+	ray_cast_2d.target_position = mouse_global - ray_cast_2d.global_position
 	ray_cast_2d.force_raycast_update()
 
 	if ray_cast_2d.is_colliding():
@@ -44,19 +44,20 @@ func process(delta: float) -> PlayerState:
 func physics_process(delta: float) -> PlayerState:
 	var to_anchor = tether_point - player.global_position
 	var distance = to_anchor.length()
+	var direction = to_anchor.normalized()
 
+	# Strong pull toward anchor (this creates movement)
+	player.velocity += direction * pull_strength * delta
+
+	# Rope length constraint (keeps swing radius)
 	if distance > tether_length:
-		var direction = to_anchor.normalized()
+		player.global_position = tether_point - direction * tether_length
 
-		# Pull force
-		var pull_force = direction * pull_strength * (distance - tether_length)
-		player.velocity += pull_force * delta
-
-		# HARD rope constraint (important)
-		var correction = direction * (distance - tether_length)
-		player.global_position += correction
+		# Remove outward velocity so it doesn't explode
+		var outward_velocity = direction * player.velocity.dot(direction)
+		player.velocity -= outward_velocity
 
 	# Drag
-	player.velocity *= (1.0 - drag_strength * delta)
+	player.velocity *= clamp(1.0 - drag_strength * delta, 0.0, 1.0)
 
 	return null

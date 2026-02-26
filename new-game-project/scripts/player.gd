@@ -29,8 +29,8 @@ func _unhandled_input(event: InputEvent) -> void:
 
 
 func _physics_process(delta: float) -> void:
-	move_and_slide()
 	change_state(current_state.physics_process(delta))
+	move_and_slide()
 
 
 func _process(delta: float) -> void:

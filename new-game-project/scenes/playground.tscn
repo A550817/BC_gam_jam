@@ -2,6 +2,15 @@
 
 [ext_resource type="PackedScene" uid="uid://be8qbmt0fe144" path="res://scenes/player.tscn" id="1_hddm4"]
 
+[sub_resource type="CircleShape2D" id="CircleShape2D_hddm4"]
+radius = 53.366657
+
 [node name="Playground" type="Node2D" unique_id=2036895998]
 
 [node name="Player" parent="." unique_id=1030372719 instance=ExtResource("1_hddm4")]
+
+[node name="StaticBody2D" type="StaticBody2D" parent="." unique_id=2016624350]
+position = Vector2(566, 452)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D" unique_id=1599853476]
+shape = SubResource("CircleShape2D_hddm4")

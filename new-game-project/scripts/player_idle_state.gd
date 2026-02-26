@@ -8,7 +8,7 @@ func init():
 
 # What happens when we enter the state
 func enter():
-	player.velocity = Vector2.ZERO
+	#player.velocity = Vector2.ZERO
 	ray_cast_2d.enabled = false
 
 
