@@ -15,9 +15,12 @@ func init():
 # What happens when we enter the state
 func enter() -> PlayerState:
 	ray_cast_2d.enabled = true
-	var mouse_global = player.get_global_mouse_position()
-	var mouse_vec = mouse_global
-	ray_cast_2d.target_position = (mouse_global - ray_cast_2d.global_position).normalized()*max_tether_length
+	if not player.is_controller:
+		var mouse_global = player.get_global_mouse_position()
+		var mouse_vec = mouse_global
+		ray_cast_2d.target_position = (mouse_global - ray_cast_2d.global_position).normalized() * max_tether_length
+	else:
+		ray_cast_2d.target_position = player.controller_direction * max_tether_length
 	ray_cast_2d.force_raycast_update()
 
 	if ray_cast_2d.is_colliding():

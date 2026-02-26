@@ -1,6 +1,8 @@
 [gd_scene format=3 uid="uid://c5tch4a2pi7am"]
 
 [ext_resource type="PackedScene" uid="uid://be8qbmt0fe144" path="res://scenes/player.tscn" id="1_hddm4"]
+[ext_resource type="Texture2D" uid="uid://patb77gxpari" path="res://art/BSSCTG-PLAYER2.svg" id="2_kddj0"]
+[ext_resource type="Texture2D" uid="uid://bhl3yla6dwrcb" path="res://art/BSSCTG-PLAYER1.svg" id="2_q8s1k"]
 [ext_resource type="Texture2D" uid="uid://4q335xxs2p" path="res://icon.svg" id="2_qchbg"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_hddm4"]
@@ -13,6 +15,7 @@ radius = 53.366657
 
 [node name="Player" parent="." unique_id=1030372719 instance=ExtResource("1_hddm4")]
 position = Vector2(491, 329)
+texture = ExtResource("2_q8s1k")
 
 [node name="StaticBody2D3" type="StaticBody2D" parent="." unique_id=441174328]
 
@@ -36,3 +39,8 @@ shape = SubResource("RectangleShape2D_hddm4")
 position = Vector2(128, 265)
 scale = Vector2(0.140625, 0.140625)
 texture = ExtResource("2_qchbg")
+
+[node name="Player2" parent="." unique_id=388737432 instance=ExtResource("1_hddm4")]
+position = Vector2(882, 582)
+is_controller = true
+texture = ExtResource("2_kddj0")

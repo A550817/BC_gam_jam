@@ -25,7 +25,7 @@ var previous_state: PlayerState:
 
 @export var max_health: int = 10
 var health: int = max_health
-
+var controller_direction: Vector2
 
 func _ready() -> void:
 	if texture:
@@ -43,6 +43,8 @@ func _physics_process(delta: float) -> void:
 	if collision:
 		velocity = velocity.bounce(collision.get_normal())
 		change_state(%IdleState)
+	
+	controller_direction = Input.get_vector("aim_left", "aim_right", "aim_up", "aim_down")
 	
 
 
