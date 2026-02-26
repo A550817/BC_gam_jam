@@ -1,0 +1,82 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!-- Created with Inkscape (http://www.inkscape.org/) -->
+
+<svg
+   width="512"
+   height="512"
+   viewBox="0 0 512 512"
+   version="1.1"
+   id="svg1"
+   inkscape:version="1.4.3 (0d15f75, 2025-12-25)"
+   sodipodi:docname="BSSCTG-PLAYER2.svg"
+   xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
+   xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
+   xmlns="http://www.w3.org/2000/svg"
+   xmlns:svg="http://www.w3.org/2000/svg">
+  <sodipodi:namedview
+     id="namedview1"
+     pagecolor="#505050"
+     bordercolor="#eeeeee"
+     borderopacity="1"
+     inkscape:showpageshadow="0"
+     inkscape:pageopacity="0"
+     inkscape:pagecheckerboard="0"
+     inkscape:deskcolor="#505050"
+     inkscape:document-units="px"
+     inkscape:zoom="1.0051269"
+     inkscape:cx="443.22761"
+     inkscape:cy="255.6891"
+     inkscape:window-width="1440"
+     inkscape:window-height="890"
+     inkscape:window-x="-6"
+     inkscape:window-y="-6"
+     inkscape:window-maximized="1"
+     inkscape:current-layer="layer2" />
+  <defs
+     id="defs1">
+    <filter
+       inkscape:collect="always"
+       style="color-interpolation-filters:sRGB"
+       id="filter3"
+       x="-0.096729043"
+       y="-0.096729043"
+       width="1.1934581"
+       height="1.1934581">
+      <feGaussianBlur
+         inkscape:collect="always"
+         stdDeviation="6.0251221"
+         id="feGaussianBlur3" />
+    </filter>
+  </defs>
+  <g
+     inkscape:groupmode="layer"
+     id="layer2"
+     inkscape:label="Layer 2">
+    <g
+       inkscape:label="Layer 1"
+       inkscape:groupmode="layer"
+       id="layer1">
+      <circle
+         style="mix-blend-mode:normal;fill:none;stroke:#ff0000;stroke-width:4.934;stroke-dasharray:none;stroke-opacity:1;filter:url(#filter3)"
+         id="path1"
+         cx="237.2776"
+         cy="203.65373"
+         r="87.498505"
+         transform="matrix(2.4409671,0,0,2.4305626,-314.83481,-246.75281)" />
+      <ellipse
+         style="fill:#fd0000;fill-opacity:0;stroke:#ff0000;stroke-width:3.73646;stroke-dasharray:none;stroke-opacity:1"
+         id="circle3"
+         cx="262.45175"
+         cy="248.44029"
+         rx="213.58099"
+         ry="212.67061" />
+    </g>
+    <ellipse
+       style="fill:#000000;fill-opacity:0;stroke:#ffffff;stroke-width:0.569967;stroke-dasharray:none"
+       id="circle1-5"
+       cx="262.0257"
+       cy="247.83516"
+       rx="213.58099"
+       ry="212.67061" />
+  </g>
+</svg>

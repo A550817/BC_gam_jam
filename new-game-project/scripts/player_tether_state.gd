@@ -4,7 +4,7 @@ class_name PlayerStateTether extends PlayerState
 var tether_point: Vector2 = Vector2.ZERO
 var tether_length: float = 100.0
 @export var max_tether_length: float = 1000.0
-@export var pull_strength: float = 100.0
+@export var pull_strength: float = 200.0
 @export var constraint_strength: float = 2
 
 # What happens when this state is initialized
