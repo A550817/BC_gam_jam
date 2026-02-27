@@ -7,11 +7,9 @@
 [ext_resource type="Script" uid="uid://db60ox5i7rpmd" path="res://scripts/player_hurt_state.gd" id="4_dqkch"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_g2els"]
-radius = 44.011364
+radius = 40.0
 
 [node name="CharacterBody2D" type="CharacterBody2D" unique_id=388737432]
-collision_layer = 2
-collision_mask = 7
 script = ExtResource("1_3vyb7")
 drag_strength = 1.0
 
@@ -39,5 +37,3 @@ script = ExtResource("4_dqkch")
 [node name="RayCast2D" type="RayCast2D" parent="." unique_id=76674754]
 unique_name_in_owner = true
 target_position = Vector2(0, 0)
-collision_mask = 7
-collide_with_areas = true
