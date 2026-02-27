@@ -4,7 +4,8 @@ class_name PlayerStateTether extends PlayerState
 var tether_point: Vector2 = Vector2.ZERO
 var tether_length: float = 100.0
 @export var max_tether_length: float = 1000.0
-@export var pull_strength: float = 100.0
+@export var radial_pull_strength: float = 100.0
+@export var pull_speed: float = 100.0
 @export var constraint_strength: float = 2
 
 # What happens when this state is initialized
@@ -45,18 +46,12 @@ func process(delta: float) -> PlayerState:
 
 
 func physics_process(delta: float) -> PlayerState:
-	ray_cast_2d.target_position = tether_point - ray_cast_2d.global_position
-	ray_cast_2d.force_raycast_update()
 	
 	var to_anchor = tether_point - player.global_position
 	var distance = to_anchor.length()
 	var direction = to_anchor.normalized()
-	tether_length = max(0, tether_length - (pull_strength * delta))
-	var targetpos = tether_point - direction * tether_length
-	
-	var colinear_pull = abs(tether_length - distance) * direction * delta * 100
-	player.velocity += colinear_pull
-		
-	$"../../../Sprite2D".position = targetpos
+
+	var radial_pull = radial_pull_strength * direction * delta * 10
+	player.velocity += radial_pull
 	
 	return null
