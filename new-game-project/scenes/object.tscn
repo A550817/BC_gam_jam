@@ -1,0 +1,20 @@
+[gd_scene format=3 uid="uid://c3byulq3or1sv"]
+
+[ext_resource type="Script" uid="uid://c0csu15dcluis" path="res://scripts/object.gd" id="1_cbfvs"]
+[ext_resource type="Texture2D" uid="uid://vb2vw0n2skc4" path="res://art/BSSCTG-PLATFORM_YELLOW.svg" id="1_pkda2"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_cbfvs"]
+size = Vector2(404, 396)
+
+[node name="Object" type="RigidBody2D" unique_id=1047413255]
+collision_layer = 4
+collision_mask = 6
+gravity_scale = 0.0
+script = ExtResource("1_cbfvs")
+metadata/_custom_type_script = "uid://b4ugb67jycp4v"
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=1998647700]
+texture = ExtResource("1_pkda2")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=420492729]
+shape = SubResource("RectangleShape2D_cbfvs")
