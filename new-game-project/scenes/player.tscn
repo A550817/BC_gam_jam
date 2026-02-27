@@ -9,6 +9,8 @@
 [sub_resource type="CircleShape2D" id="CircleShape2D_g2els"]
 radius = 40.0
 
+[sub_resource type="CircleShape2D" id="CircleShape2D_qlg0r"]
+
 [node name="CharacterBody2D" type="CharacterBody2D" unique_id=388737432]
 script = ExtResource("1_3vyb7")
 
@@ -38,3 +40,9 @@ script = ExtResource("4_dqkch")
 [node name="RayCast2D" type="RayCast2D" parent="." unique_id=76674754]
 unique_name_in_owner = true
 target_position = Vector2(0, 0)
+
+[node name="Hitbox" type="Area2D" parent="." unique_id=685547710]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Hitbox" unique_id=1102123689]
+shape = SubResource("CircleShape2D_qlg0r")
+debug_color = Color(0.6651312, 0.347234, 0.9440597, 0.41960785)

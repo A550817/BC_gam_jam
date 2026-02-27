@@ -87,7 +87,3 @@ func change_state(new_state: PlayerState):
 	change_state(current_state.enter())
 	states.resize(3)
 #endregion
-
-
-func _draw() -> void:
-	pass
