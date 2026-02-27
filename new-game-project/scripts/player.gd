@@ -33,7 +33,7 @@ func _ready() -> void:
 		sprite_2d.texture = texture
 	initialize_states()
 
-func _unhandled_input(event: InputEvent) -> void:
+func _input(event: InputEvent) -> void:
 	change_state(current_state.handle_input(event))
 
 

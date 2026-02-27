@@ -13,7 +13,6 @@ radius = 44.011364
 collision_layer = 2
 collision_mask = 7
 script = ExtResource("1_3vyb7")
-drag_strength = 1.0
 
 [node name="Sprite2D" type="Sprite2D" parent="." unique_id=1340784801]
 scale = Vector2(0.2, 0.2)
@@ -31,6 +30,8 @@ script = ExtResource("2_g2els")
 [node name="TetherState" type="Node" parent="States" unique_id=129977827]
 unique_name_in_owner = true
 script = ExtResource("3_qhqgy")
+radial_pull_strength = 200.0
+pull_speed = 200.0
 
 [node name="HurtState" type="Node" parent="States" unique_id=1682646237]
 unique_name_in_owner = true

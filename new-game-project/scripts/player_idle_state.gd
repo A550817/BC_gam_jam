@@ -20,8 +20,12 @@ func exit():
 
 # Handle input
 func handle_input(event: InputEvent) -> PlayerState:
-	if event.is_action_pressed("click"):
-		return tether_state
+	if player.is_controller:
+		if event.is_action_pressed("controller_click"):
+			return tether_state
+	else:
+		if event.is_action_pressed("mouse_click"):
+			return tether_state
 	return null
 
 
