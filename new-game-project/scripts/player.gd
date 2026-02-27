@@ -39,7 +39,7 @@ func _input(event: InputEvent) -> void:
 func _physics_process(delta: float) -> void:
 	velocity *= clamp(1.0 - drag_strength * delta, 0.0, 1.0)
 	change_state(current_state.physics_process(delta))
-	var collision := move_and_collide(velocity*delta);
+	var collision := move_and_collide(velocity * delta)
 	if collision:
 		velocity = velocity.bounce(collision.get_normal())
 		change_state(%IdleState)
@@ -87,3 +87,18 @@ func change_state(new_state: PlayerState):
 	change_state(current_state.enter())
 	states.resize(3)
 #endregion
+
+
+func _on_hitbox_body_entered(body: Node2D) -> void:
+	if body.velocity < velocity:
+		body.take_damage(10, body)
+	elif body.velocity > velocity:
+		take_damage(10, self)
+	else:
+		body.take_damage(10, body)
+		take_damage(	10, self)
+
+
+func take_damage(damage: int, body):
+	health -= damage
+	print(body , "taken damage")
