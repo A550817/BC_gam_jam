@@ -39,8 +39,12 @@ func exit():
 
 # Handle input
 func handle_input(event: InputEvent) -> PlayerState:
-	if event.is_action_released("click"):
-		return idle_state
+	if player.is_controller:
+		if event.is_action_released("controller_click"):
+			return idle_state
+	else:
+		if event.is_action_released("mouse_click"):
+			return idle_state
 	return null
 
 
