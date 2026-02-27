@@ -9,7 +9,12 @@
 [sub_resource type="CircleShape2D" id="CircleShape2D_g2els"]
 radius = 40.0
 
+[sub_resource type="CircleShape2D" id="CircleShape2D_tuyoq"]
+radius = 46.09772
+
 [node name="CharacterBody2D" type="CharacterBody2D" unique_id=388737432]
+collision_layer = 2
+collision_mask = 7
 script = ExtResource("1_3vyb7")
 drag_strength = 1.0
 
@@ -18,6 +23,7 @@ scale = Vector2(0.2, 0.2)
 texture = ExtResource("2_qlg0r")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1465505482]
+visible = false
 shape = SubResource("CircleShape2D_g2els")
 
 [node name="States" type="Node" parent="." unique_id=2014996503]
@@ -37,4 +43,15 @@ script = ExtResource("4_dqkch")
 [node name="RayCast2D" type="RayCast2D" parent="." unique_id=76674754]
 unique_name_in_owner = true
 target_position = Vector2(0, 0)
+collision_mask = 7
 collide_with_areas = true
+
+[node name="Hitbox" type="Area2D" parent="." unique_id=2122332251]
+collision_layer = 0
+collision_mask = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Hitbox" unique_id=542131219]
+shape = SubResource("CircleShape2D_tuyoq")
+debug_color = Color(0.96821624, 0.15359592, 0.25625825, 0.41960785)
+
+[connection signal="body_entered" from="Hitbox" to="." method="_on_hitbox_body_entered"]

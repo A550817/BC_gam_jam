@@ -6,8 +6,12 @@
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_cbfvs"]
 size = Vector2(404, 396)
 
-[node name="Object" type="Area2D" unique_id=1336581670]
+[node name="Object" type="RigidBody2D" unique_id=1047413255]
+collision_layer = 4
+collision_mask = 6
+gravity_scale = 0.0
 script = ExtResource("1_cbfvs")
+metadata/_custom_type_script = "uid://b4ugb67jycp4v"
 
 [node name="Sprite2D" type="Sprite2D" parent="." unique_id=1998647700]
 texture = ExtResource("1_pkda2")

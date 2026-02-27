@@ -91,3 +91,18 @@ func change_state(new_state: PlayerState):
 
 func _draw() -> void:
 	pass
+
+
+
+
+
+func _on_hitbox_body_entered(body: Node2D) -> void:
+	if body.velocity < velocity:
+		if body.has_method("take_damage"):
+			body.take_damage()
+	elif body.velocity > velocity:
+		take_damage()
+
+
+func take_damage():
+	print("fff")

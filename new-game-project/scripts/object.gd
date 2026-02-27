@@ -1,4 +1,4 @@
-extends Area2D
+extends SoftBody2DRigidBody
 
 
 @export var texture: CompressedTexture2D
