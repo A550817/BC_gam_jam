@@ -1,10 +1,14 @@
 class_name Player extends CharacterBody2D
 
 
+@onready var sprite_2d: Sprite2D = $Sprite2D
+
 @export var drag_strength: float = 0.5
 @export var speed: int = 100
 @export var radius: float = 50.0
 @export var color: Color = Color.CYAN
+@export var is_controller: bool = false
+@export var texture: CompressedTexture2D
 
 #region /// StateMachineVariables
 var states: Array = [PlayerState]
@@ -21,9 +25,11 @@ var previous_state: PlayerState:
 
 @export var max_health: int = 10
 var health: int = max_health
-
+var controller_direction: Vector2
 
 func _ready() -> void:
+	if texture:
+		sprite_2d.texture = texture
 	initialize_states()
 
 func _unhandled_input(event: InputEvent) -> void:
@@ -37,6 +43,8 @@ func _physics_process(delta: float) -> void:
 	if collision:
 		velocity = velocity.bounce(collision.get_normal())
 		change_state(%IdleState)
+	
+	controller_direction = Input.get_vector("aim_left", "aim_right", "aim_up", "aim_down")
 	
 
 
