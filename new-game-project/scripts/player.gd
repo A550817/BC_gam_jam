@@ -103,12 +103,37 @@ func _on_hitbox_body_entered(body: Node2D) -> void:
 			resolve_combat(body)
 
 
-func take_damage(damage: int, body):
+func take_damage(_damage: int, velocity: Vector2):
+
+	# --- Calculate impact force ---
+	var current_scale: float = scale.x
+	var impact_force: float = velocity.length() * current_scale
+	
+	# Convert impact to damage
+	var damage: int = int(impact_force * 0.01)
+	damage = clamp(damage, 1, 25) # Prevent zero damage & absurd spikes
+	
+	# Convert impact to shake
+	var shake_amount: float = clamp(impact_force * 0.15, 6.0, 18.0)
+	Engine.time_scale = 0.2
+	await get_tree().create_timer(0.04, false, true).timeout
+	Engine.time_scale = 1
+	
+	$"../Camera2D".shake(shake_amount)
+	
+	modulate = Color(1.4, 1.4, 1.4)
+	await get_tree().create_timer(0.05).timeout
+	modulate = Color(1,1,1)
+	
+	var original_scale := scale
+	scale *= 1.1
+	await get_tree().create_timer(0.05).timeout
+	
 	health -= damage
 	health = clamp(health, 0, max_health)
+	
 	var ratio := float(health) / float(max_health)
 	scale = Vector2(ratio, ratio)
-
 
 func update_texture():
 	if not is_node_ready():
@@ -118,9 +143,9 @@ func update_texture():
 
 func resolve_combat(body: Node2D):
 	if body.velocity.length() < velocity.length():
-		body.take_damage(10, body)
+		body.take_damage(10, body.velocity)
 	elif body.velocity.length() > velocity.length():
-		take_damage(10, self)
+		take_damage(10, velocity)
 	else:
-		body.take_damage(10, body)
-		take_damage(10, self)
+		body.take_damage(10, body.velocity)
+		take_damage(10, velocity)

@@ -5,6 +5,7 @@
 [ext_resource type="Texture2D" uid="uid://7110apb2j7vm" path="res://art/BSSCTG-PLATFORM_MAGENTA.svg" id="3_kddj0"]
 [ext_resource type="Texture2D" uid="uid://vb2vw0n2skc4" path="res://art/BSSCTG-PLATFORM_YELLOW.svg" id="4_mm0a5"]
 [ext_resource type="Texture2D" uid="uid://u3jp0q2sed78" path="res://art/BSSCTG-PLATFORM_CYAN.svg" id="5_o6wi6"]
+[ext_resource type="Script" uid="uid://de65macppjq2a" path="res://scripts/camera_2d.gd" id="6_o6wi6"]
 
 [sub_resource type="CompressedTexture2D" id="CompressedTexture2D_kddj0"]
 load_path = "res://.godot/imported/BSSCTG-PLAYER1.svg-4c3a65dda90af5b9d2441c3abdb850d5.ctex"
@@ -49,3 +50,7 @@ texture = ExtResource("5_o6wi6")
 
 [node name="Object4" parent="." unique_id=880803938 instance=ExtResource("2_qchbg")]
 texture = ExtResource("4_mm0a5")
+
+[node name="Camera2D" type="Camera2D" parent="." unique_id=1674781298]
+position = Vector2(1275, 721)
+script = ExtResource("6_o6wi6")
