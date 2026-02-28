@@ -32,6 +32,7 @@ is_controller = true
 texture = SubResource("CompressedTexture2D_q8s1k")
 
 [node name="StaticBody2D3" type="StaticBody2D" parent="." unique_id=441174328]
+collision_layer = 5
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D3" unique_id=729204340]
 position = Vector2(1131, 689)
@@ -39,11 +40,13 @@ shape = SubResource("RectangleShape2D_hddm4")
 
 [node name="StaticBody2D" type="StaticBody2D" parent="." unique_id=2016624350]
 position = Vector2(566, 452)
+collision_layer = 5
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D" unique_id=1599853476]
 shape = SubResource("CircleShape2D_hddm4")
 
 [node name="StaticBody2D2" type="StaticBody2D" parent="." unique_id=2034455872]
+collision_layer = 5
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D2" unique_id=2052463815]
 position = Vector2(572, 75)
