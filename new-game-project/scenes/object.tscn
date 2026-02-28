@@ -4,7 +4,7 @@
 [ext_resource type="Texture2D" uid="uid://7110apb2j7vm" path="res://art/BSSCTG-PLATFORM_MAGENTA.svg" id="2_cbfvs"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_cbfvs"]
-size = Vector2(404, 396)
+size = Vector2(20.359278, 15.707617)
 
 [node name="Object" type="RigidBody2D" unique_id=2014205349]
 collision_layer = 4
@@ -14,6 +14,7 @@ script = ExtResource("1_cbfvs")
 metadata/_custom_type_script = "uid://b4ugb67jycp4v"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=420492729]
+scale = Vector2(20.040003, 25.720003)
 shape = SubResource("RectangleShape2D_cbfvs")
 
 [node name="Sprite2D" type="Sprite2D" parent="." unique_id=1998647700]
