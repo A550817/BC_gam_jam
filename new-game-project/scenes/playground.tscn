@@ -1,6 +1,10 @@
 [gd_scene format=3 uid="uid://c5tch4a2pi7am"]
 
 [ext_resource type="PackedScene" uid="uid://be8qbmt0fe144" path="res://scenes/player.tscn" id="1_hddm4"]
+[ext_resource type="PackedScene" uid="uid://bv0qi4ki0bbxn" path="res://scenes/object.tscn" id="2_qchbg"]
+[ext_resource type="Texture2D" uid="uid://7110apb2j7vm" path="res://art/BSSCTG-PLATFORM_MAGENTA.svg" id="3_kddj0"]
+[ext_resource type="Texture2D" uid="uid://vb2vw0n2skc4" path="res://art/BSSCTG-PLATFORM_YELLOW.svg" id="4_mm0a5"]
+[ext_resource type="Texture2D" uid="uid://u3jp0q2sed78" path="res://art/BSSCTG-PLATFORM_CYAN.svg" id="5_o6wi6"]
 
 [sub_resource type="CompressedTexture2D" id="CompressedTexture2D_kddj0"]
 load_path = "res://.godot/imported/BSSCTG-PLAYER1.svg-4c3a65dda90af5b9d2441c3abdb850d5.ctex"
@@ -8,17 +12,12 @@ load_path = "res://.godot/imported/BSSCTG-PLAYER1.svg-4c3a65dda90af5b9d2441c3abd
 [sub_resource type="CompressedTexture2D" id="CompressedTexture2D_q8s1k"]
 load_path = "res://.godot/imported/BSSCTG-PLAYER2.svg-79df5ff7a18105dd2cc31bdfe5df2f82.ctex"
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_hddm4"]
-size = Vector2(635, 20)
-
-[sub_resource type="CircleShape2D" id="CircleShape2D_hddm4"]
-radius = 53.366657
-
 [sub_resource type="Environment" id="Environment_hddm4"]
 background_mode = 3
 glow_enabled = true
 glow_intensity = 4.2
 glow_bloom = 1.0
+fog_enabled = true
 
 [node name="Playground" type="Node2D" unique_id=2036895998]
 
@@ -31,26 +30,23 @@ position = Vector2(882, 582)
 is_controller = true
 texture = SubResource("CompressedTexture2D_q8s1k")
 
-[node name="StaticBody2D3" type="StaticBody2D" parent="." unique_id=441174328]
-collision_layer = 5
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D3" unique_id=729204340]
-position = Vector2(1131, 689)
-shape = SubResource("RectangleShape2D_hddm4")
-
-[node name="StaticBody2D" type="StaticBody2D" parent="." unique_id=2016624350]
-position = Vector2(566, 452)
-collision_layer = 5
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D" unique_id=1599853476]
-shape = SubResource("CircleShape2D_hddm4")
-
-[node name="StaticBody2D2" type="StaticBody2D" parent="." unique_id=2034455872]
-collision_layer = 5
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D2" unique_id=2052463815]
-position = Vector2(572, 75)
-shape = SubResource("RectangleShape2D_hddm4")
-
 [node name="WorldEnvironment" type="WorldEnvironment" parent="." unique_id=152811862]
 environment = SubResource("Environment_hddm4")
+
+[node name="Object" parent="." unique_id=1047413255 instance=ExtResource("2_qchbg")]
+position = Vector2(701, 48)
+scale = Vector2(0.7108402, 0.82433313)
+texture = ExtResource("3_kddj0")
+
+[node name="Object2" parent="." unique_id=2047639387 instance=ExtResource("2_qchbg")]
+position = Vector2(1465, 594)
+scale = Vector2(1, 2.8)
+texture = ExtResource("4_mm0a5")
+
+[node name="Object3" parent="." unique_id=387859883 instance=ExtResource("2_qchbg")]
+position = Vector2(-34, 681)
+scale = Vector2(0.4918834, -1.1836114)
+texture = ExtResource("5_o6wi6")
+
+[node name="Object4" parent="." unique_id=880803938 instance=ExtResource("2_qchbg")]
+texture = ExtResource("4_mm0a5")

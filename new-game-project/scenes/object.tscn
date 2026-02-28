@@ -1,7 +1,7 @@
 [gd_scene format=3 uid="uid://bv0qi4ki0bbxn"]
 
-[ext_resource type="Script" path="res://scripts/object.gd" id="1_cbfvs"]
-[ext_resource type="Texture2D" path="res://art/BSSCTG-PLATFORM_YELLOW.svg" id="1_pkda2"]
+[ext_resource type="Script" uid="uid://bdp32hj3h4d84" path="res://scripts/object.gd" id="1_cbfvs"]
+[ext_resource type="Texture2D" uid="uid://7110apb2j7vm" path="res://art/BSSCTG-PLATFORM_MAGENTA.svg" id="2_cbfvs"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_cbfvs"]
 size = Vector2(404, 396)
@@ -13,8 +13,8 @@ gravity_scale = 0.0
 script = ExtResource("1_cbfvs")
 metadata/_custom_type_script = "uid://b4ugb67jycp4v"
 
-[node name="Sprite2D" type="Sprite2D" parent="." unique_id=1998647700]
-texture = ExtResource("1_pkda2")
-
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=420492729]
 shape = SubResource("RectangleShape2D_cbfvs")
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=1998647700]
+texture = ExtResource("2_cbfvs")
