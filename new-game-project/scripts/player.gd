@@ -31,6 +31,9 @@ var controller_direction: Vector2
 
 func _ready() -> void:
 	update_texture()
+	if Engine.is_editor_hint():
+		return
+	
 	initialize_states()
 
 func _input(event: InputEvent) -> void:
