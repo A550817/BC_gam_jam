@@ -10,11 +10,16 @@
 radius = 40.0
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_qlg0r"]
+radius = 8.0
 
 [node name="CharacterBody2D" type="CharacterBody2D" unique_id=388737432]
 collision_layer = 2
 collision_mask = 6
 script = ExtResource("1_3vyb7")
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=1340784801]
+scale = Vector2(0.2, 0.2)
+texture = ExtResource("2_qlg0r")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1465505482]
 shape = SubResource("CircleShape2D_g2els")
@@ -41,15 +46,12 @@ target_position = Vector2(0, 0)
 collision_mask = 6
 
 [node name="Hitbox" type="Area2D" parent="." unique_id=685547710]
+scale = Vector2(5.1199975, 4.9199996)
 collision_layer = 0
 collision_mask = 2
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Hitbox" unique_id=1102123689]
 shape = SubResource("CircleShape2D_qlg0r")
 debug_color = Color(0.6651312, 0.347234, 0.9440597, 0.41960785)
-
-[node name="Sprite2D" type="Sprite2D" parent="." unique_id=1340784801]
-scale = Vector2(0.2, 0.2)
-texture = ExtResource("2_qlg0r")
 
 [connection signal="body_entered" from="Hitbox" to="." method="_on_hitbox_body_entered"]
