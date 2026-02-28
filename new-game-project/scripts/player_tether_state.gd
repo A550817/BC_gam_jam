@@ -84,7 +84,7 @@ func apply_random_scale(target: Node2D):
 	if not rect:
 		return
 	
-	var multiplier := 1.2 if randf() < 0.5 else 0.8
+	var multiplier := 1.1 if randf() < 0.5 else 0.9
 	
 	rect.size *= multiplier
 	
