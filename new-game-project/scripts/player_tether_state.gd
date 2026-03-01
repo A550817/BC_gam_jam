@@ -60,7 +60,8 @@ func physics_process(delta: float) -> PlayerState:
 	var distance = to_anchor.length()
 	var direction = to_anchor.normalized()
 
-	var radial_pull = radial_pull_strength * direction * delta * 10
+	var speed_mult: float = player.get_speed_multiplier()
+	var radial_pull = radial_pull_strength * speed_mult * direction * delta * 10
 	player.velocity += radial_pull
 	
 	return null
@@ -84,7 +85,7 @@ func apply_random_scale(target: Node2D):
 	if not rect:
 		return
 	
-	var multiplier := 1.1 if randf() < 0.5 else 0.9
+	var multiplier := 1.1 if randf() < 0.5 else 0.
 	
 	rect.size *= multiplier
 	

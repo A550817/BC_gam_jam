@@ -1,11 +1,22 @@
 [gd_scene format=3 uid="uid://c5tch4a2pi7am"]
 
 [ext_resource type="PackedScene" uid="uid://be8qbmt0fe144" path="res://scenes/player.tscn" id="1_hddm4"]
+[ext_resource type="AudioStream" uid="uid://byr4oeddeh7jv" path="res://audio/impactPunch_medium_000.ogg" id="2_j30dx"]
 [ext_resource type="PackedScene" uid="uid://bv0qi4ki0bbxn" path="res://scenes/object.tscn" id="2_qchbg"]
+[ext_resource type="AudioStream" uid="uid://bntyjvubps00l" path="res://audio/impactPunch_medium_001.ogg" id="3_2ilni"]
 [ext_resource type="Texture2D" uid="uid://7110apb2j7vm" path="res://art/BSSCTG-PLATFORM_MAGENTA.svg" id="3_kddj0"]
+[ext_resource type="AudioStream" uid="uid://dr0i464vnuev7" path="res://audio/impactPunch_medium_002.ogg" id="4_d3jfy"]
 [ext_resource type="Texture2D" uid="uid://vb2vw0n2skc4" path="res://art/BSSCTG-PLATFORM_YELLOW.svg" id="4_mm0a5"]
 [ext_resource type="Texture2D" uid="uid://u3jp0q2sed78" path="res://art/BSSCTG-PLATFORM_CYAN.svg" id="5_o6wi6"]
+[ext_resource type="AudioStream" uid="uid://dw13873tpue4q" path="res://audio/impactPunch_medium_003.ogg" id="5_q6c7b"]
 [ext_resource type="Script" uid="uid://de65macppjq2a" path="res://scripts/camera_2d.gd" id="6_o6wi6"]
+[ext_resource type="AudioStream" uid="uid://clgls28wrp1es" path="res://audio/impactPunch_medium_004.ogg" id="6_x2tju"]
+[ext_resource type="AudioStream" uid="uid://grxahib6k1en" path="res://audio/impactPunch_heavy_000.ogg" id="7_wm6m6"]
+[ext_resource type="AudioStream" uid="uid://dl0qvrl6uk8fa" path="res://audio/impactPunch_heavy_001.ogg" id="8_ocmmj"]
+[ext_resource type="AudioStream" uid="uid://b4goeyt0hrl7d" path="res://audio/impactPunch_heavy_002.ogg" id="9_vwj6b"]
+[ext_resource type="AudioStream" uid="uid://cwwsnltexsgu7" path="res://audio/impactPunch_heavy_003.ogg" id="10_62tve"]
+[ext_resource type="AudioStream" uid="uid://bum73s17ate17" path="res://audio/impactPunch_heavy_004.ogg" id="11_rdeg0"]
+[ext_resource type="AudioStream" uid="uid://p7beux8imlu5" path="res://audio/Runway.wav" id="17_2ilni"]
 
 [sub_resource type="CompressedTexture2D" id="CompressedTexture2D_kddj0"]
 load_path = "res://.godot/imported/BSSCTG-PLAYER1.svg-4c3a65dda90af5b9d2441c3abdb850d5.ctex"
@@ -23,10 +34,14 @@ glow_bloom = 1.0
 
 [node name="Player" parent="." unique_id=1030372719 instance=ExtResource("1_hddm4")]
 position = Vector2(491, 329)
+small_hit_sounds = Array[AudioStream]([ExtResource("2_j30dx"), ExtResource("3_2ilni"), ExtResource("4_d3jfy"), ExtResource("5_q6c7b"), ExtResource("6_x2tju")])
+heavy_hit_sounds = Array[AudioStream]([ExtResource("7_wm6m6"), ExtResource("8_ocmmj"), ExtResource("9_vwj6b"), ExtResource("10_62tve"), ExtResource("11_rdeg0")])
 texture = SubResource("CompressedTexture2D_kddj0")
 
 [node name="Player2" parent="." unique_id=388737432 instance=ExtResource("1_hddm4")]
 position = Vector2(882, 582)
+small_hit_sounds = Array[AudioStream]([ExtResource("2_j30dx"), ExtResource("3_2ilni"), ExtResource("4_d3jfy"), ExtResource("5_q6c7b"), ExtResource("6_x2tju")])
+heavy_hit_sounds = Array[AudioStream]([ExtResource("7_wm6m6"), ExtResource("8_ocmmj"), ExtResource("9_vwj6b"), ExtResource("10_62tve"), ExtResource("11_rdeg0")])
 is_controller = true
 texture = SubResource("CompressedTexture2D_q8s1k")
 
@@ -54,3 +69,7 @@ texture = ExtResource("4_mm0a5")
 [node name="Camera2D" type="Camera2D" parent="." unique_id=1674781298]
 position = Vector2(1275, 721)
 script = ExtResource("6_o6wi6")
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="." unique_id=28148514]
+stream = ExtResource("17_2ilni")
+bus = &"Music"

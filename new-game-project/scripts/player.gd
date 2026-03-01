@@ -4,6 +4,8 @@ class_name Player extends CharacterBody2D
 
 @onready var sprite_2d: Sprite2D = $Sprite2D
 
+@export var small_hit_sounds: Array[AudioStream]
+@export var heavy_hit_sounds: Array[AudioStream]
 @export var drag_strength: float = 0.5
 @export var speed: int = 100
 @export var is_controller: bool = false
@@ -49,7 +51,7 @@ func _physics_process(delta: float) -> void:
 	if collision:
 		velocity = velocity.bounce(collision.get_normal())
 		change_state(%IdleState)
-	
+	clamp_velocity()
 	controller_direction = Input.get_vector("aim_left", "aim_right", "aim_up", "aim_down")
 	
 
@@ -103,15 +105,15 @@ func _on_hitbox_body_entered(body: Node2D) -> void:
 			resolve_combat(body)
 
 
-func take_damage(_damage: int, velocity: Vector2):
+func take_damage(velocity: Vector2):
 
 	# --- Calculate impact force ---
 	var current_scale: float = scale.x
-	var impact_force: float = velocity.length() * current_scale
+	var impact_force: float = velocity.length() / current_scale
 	
 	# Convert impact to damage
-	var damage: int = int(impact_force * 0.01)
-	damage = clamp(damage, 1, 25) # Prevent zero damage & absurd spikes
+	var damage: int = int(impact_force * 0.02)
+	damage = clamp(damage, 4, 30) # Prevent zero damage & absurd spikes
 	
 	# Convert impact to shake
 	var shake_amount: float = clamp(impact_force * 0.15, 6.0, 18.0)
@@ -120,20 +122,27 @@ func take_damage(_damage: int, velocity: Vector2):
 	Engine.time_scale = 1
 	
 	$"../Camera2D".shake(shake_amount)
+	play_hit_sound(impact_force)
+	$HitParticles.global_position = global_position
+	$HitParticles.restart()
 	
 	modulate = Color(1.4, 1.4, 1.4)
 	await get_tree().create_timer(0.05).timeout
 	modulate = Color(1,1,1)
 	
-	var original_scale := scale
+	var base_scale := scale
+	
 	scale *= 1.1
 	await get_tree().create_timer(0.05).timeout
+	scale = base_scale
 	
 	health -= damage
 	health = clamp(health, 0, max_health)
-	
-	var ratio := float(health) / float(max_health)
-	scale = Vector2(ratio, ratio)
+	var ratio: float = float(health) / float(max_health)
+	var visual_scale: float = lerp(0.3, 1.0, ratio)
+	scale = Vector2(visual_scale, visual_scale)
+	print("Health:", health, " Scale:", scale.x)
+
 
 func update_texture():
 	if not is_node_ready():
@@ -143,9 +152,49 @@ func update_texture():
 
 func resolve_combat(body: Node2D):
 	if body.velocity.length() < velocity.length():
-		body.take_damage(10, body.velocity)
+		body.take_damage(velocity)
 	elif body.velocity.length() > velocity.length():
-		take_damage(10, velocity)
+		take_damage(body.velocity)
 	else:
-		body.take_damage(10, body.velocity)
-		take_damage(10, velocity)
+		body.take_damage(velocity)
+		take_damage(body.velocity)
+
+
+func get_speed_multiplier() -> float:
+	var s: float = clamp(scale.x, 0.3, 1.0)
+	return pow(1.0 / s, 1.5)
+
+
+func clamp_velocity():
+	var s: float = clamp(scale.x, 0.3, 1.0)
+	var max_speed: float = 1200.0 * pow(1.0 / s, 1.2)
+	
+	if velocity.length() > max_speed:
+		velocity = velocity.normalized() * max_speed
+
+
+func play_hit_sound(impact_force: float):
+	var player := $HitPlayer
+	
+	var sounds: Array[AudioStream]
+	var is_heavy := impact_force > 600.0
+	
+	if is_heavy:
+		sounds = heavy_hit_sounds
+	else:
+		sounds = small_hit_sounds
+	
+	if sounds.is_empty():
+		return
+	
+	var index := randi() % sounds.size()
+	player.stream = sounds[index]
+	
+	# Pitch variation
+	player.pitch_scale = randf_range(0.98, 1.02)
+	
+	# Volume scaling
+	var volume: float = clamp(impact_force / 900.0, 0.6, 1.2)
+	player.volume_db = linear_to_db(volume)
+	
+	player.play()
