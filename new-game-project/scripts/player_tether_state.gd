@@ -3,6 +3,7 @@ class_name PlayerStateTether extends PlayerState
 
 var tether_point: Vector2 = Vector2.ZERO
 var tether_length: float = 100.0
+var tether_target: Node2D
 @export var max_tether_length: float = 650.0
 @export var radial_pull_strength: float = 100.0
 @export var pull_speed: float = 100.0
@@ -27,8 +28,7 @@ func enter() -> PlayerState:
 	if ray_cast_2d.is_colliding():
 		tether_point = ray_cast_2d.get_collision_point()
 		tether_length = player.global_position.distance_to(tether_point)
-		var collider = ray_cast_2d.get_collider()
-		apply_random_scale(collider)
+		tether_target = ray_cast_2d.get_collider()
 	else:
 		return idle_state
 	return null
@@ -64,38 +64,9 @@ func physics_process(delta: float) -> PlayerState:
 	var radial_pull = radial_pull_strength * speed_mult * direction * delta * 10
 	player.velocity += radial_pull
 	
+	
+	player.apply_children_scale(radial_pull.length()*0.0301, tether_target)
+	if tether_target is RigidBody2D:
+		tether_target.apply_force(radial_pull)
+	
 	return null
-
-
-func apply_random_scale(target: Node2D):
-	if not target:
-		return
-	
-	if target is CharacterBody2D:
-		return
-	
-	# scale collision 
-	var collision_shape := target.get_node_or_null("CollisionShape2D")
-	if not collision_shape or not collision_shape.shape:
-		return
-	
-	collision_shape.shape = collision_shape.shape.duplicate()
-	
-	var rect := collision_shape.shape as RectangleShape2D
-	if not rect:
-		return
-	
-	var multiplier := 1.1 if randf() < 0.5 else 0.
-	
-	rect.size *= multiplier
-	
-	rect.size.x = max(rect.size.x, 10)
-	rect.size.y = max(rect.size.y, 10)
-	
-	# scale sprite
-	var sprite := target.get_node_or_null("Sprite2D")
-	if sprite:
-		sprite.scale *= multiplier
-	
-	sprite.scale.x = max(sprite.scale.x, 0.2)
-	sprite.scale.y = max(sprite.scale.y, 0.2)

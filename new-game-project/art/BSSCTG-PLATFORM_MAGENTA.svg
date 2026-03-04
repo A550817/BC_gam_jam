@@ -23,9 +23,9 @@
      inkscape:pagecheckerboard="0"
      inkscape:deskcolor="#505050"
      inkscape:document-units="px"
-     inkscape:zoom="0.63085938"
-     inkscape:cx="275.02167"
-     inkscape:cy="209.23839"
+     inkscape:zoom="0.44608495"
+     inkscape:cx="543.61843"
+     inkscape:cy="605.26589"
      inkscape:window-width="1440"
      inkscape:window-height="890"
      inkscape:window-x="-6"
@@ -102,35 +102,11 @@
        apply_with_radius="true"
        only_selected="false"
        hide_knots="false" />
-    <filter
-       inkscape:collect="always"
-       style="color-interpolation-filters:sRGB"
-       id="filter1"
-       x="-0.091300078"
-       y="-0.084012171"
-       width="1.1826002"
-       height="1.1680243">
-      <feGaussianBlur
-         inkscape:collect="always"
-         stdDeviation="13.417367"
-         id="feGaussianBlur1" />
-    </filter>
   </defs>
   <g
      inkscape:label="Layer 1"
      inkscape:groupmode="layer"
      id="layer1">
-    <path
-       style="fill:#999999;fill-opacity:0;stroke:#f705ff;stroke-width:5.66587;stroke-linecap:round;stroke-linejoin:miter;stroke-miterlimit:100;stroke-dasharray:none;stroke-opacity:1;filter:url(#filter1)"
-       id="rect1"
-       width="383.73041"
-       height="417.01834"
-       x="96.233864"
-       y="30.450581"
-       inkscape:path-effect="#path-effect1"
-       sodipodi:type="rect"
-       d="m 151.23386,30.450581 h 273.73041 a 55,55 45 0 1 55,55 V 392.46892 a 55,55 135 0 1 -55,55 H 151.23386 a 55,55 45 0 1 -54.999996,-55 V 85.450581 a 55,55 135 0 1 54.999996,-55 z"
-       transform="matrix(1.0556895,0,0,0.96039965,-48.143158,26.503148)" />
     <path
        style="fill:#999999;fill-opacity:0;stroke:#f705ff;stroke-width:5.66587;stroke-linecap:round;stroke-linejoin:miter;stroke-miterlimit:100;stroke-dasharray:none;stroke-opacity:1"
        id="rect1-1"
@@ -141,7 +117,7 @@
        inkscape:path-effect="#path-effect1-2"
        sodipodi:type="rect"
        d="m 151.23386,30.450581 h 273.73041 a 55,55 45 0 1 55,55 V 392.46892 a 55,55 135 0 1 -55,55 H 151.23386 a 55,55 45 0 1 -54.999996,-55 V 85.450581 a 55,55 135 0 1 54.999996,-55 z"
-       transform="matrix(1.0556895,0,0,0.96039965,-48.143161,26.503139)" />
+       transform="matrix(1.314855,0,0,1.2113069,-123.2017,-33.430324)" />
     <path
        style="fill:#999999;fill-opacity:0;stroke:#ffffff;stroke-width:0.99313;stroke-linecap:round;stroke-linejoin:miter;stroke-miterlimit:100;stroke-dasharray:none;stroke-opacity:1"
        id="rect1-2"
@@ -152,6 +128,6 @@
        inkscape:path-effect="#path-effect1-4"
        sodipodi:type="rect"
        d="m 151.23386,30.450581 h 273.73041 a 55,55 45 0 1 55,55 V 392.46892 a 55,55 135 0 1 -55,55 H 151.23386 a 55,55 45 0 1 -54.999996,-55 V 85.450581 a 55,55 135 0 1 54.999996,-55 z"
-       transform="matrix(1.0556895,0,0,0.96039965,-48.143161,26.503139)" />
+       transform="matrix(1.314855,0,0,1.2113069,-123.2017,-33.430324)" />
   </g>
 </svg>

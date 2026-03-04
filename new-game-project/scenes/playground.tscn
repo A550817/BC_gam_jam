@@ -27,7 +27,7 @@ load_path = "res://.godot/imported/BSSCTG-PLAYER2.svg-79df5ff7a18105dd2cc31bdfe5
 [sub_resource type="Environment" id="Environment_hddm4"]
 background_mode = 3
 glow_enabled = true
-glow_intensity = 4.2
+glow_intensity = 8.0
 glow_bloom = 1.0
 
 [node name="Playground" type="Node2D" unique_id=2036895998]
@@ -49,21 +49,28 @@ texture = SubResource("CompressedTexture2D_q8s1k")
 environment = SubResource("Environment_hddm4")
 
 [node name="Object" parent="." unique_id=1047413255 instance=ExtResource("2_qchbg")]
-position = Vector2(701, 48)
-scale = Vector2(0.7108402, 0.82433313)
+position = Vector2(168, 1202)
+freeze = true
+fixed = true
 texture = ExtResource("3_kddj0")
 
 [node name="Object2" parent="." unique_id=2047639387 instance=ExtResource("2_qchbg")]
 position = Vector2(1465, 594)
-scale = Vector2(1, 2.8)
+mass = 3.90625
+h = 2000.0
+fixed = false
 texture = ExtResource("4_mm0a5")
 
 [node name="Object3" parent="." unique_id=387859883 instance=ExtResource("2_qchbg")]
-position = Vector2(-34, 681)
-scale = Vector2(0.4918834, -1.1836114)
+position = Vector2(280, 382)
+mass = 1.953125
+w = 128.0
+fixed = false
 texture = ExtResource("5_o6wi6")
 
 [node name="Object4" parent="." unique_id=880803938 instance=ExtResource("2_qchbg")]
+position = Vector2(279, -754)
+fixed = false
 texture = ExtResource("4_mm0a5")
 
 [node name="Camera2D" type="Camera2D" parent="." unique_id=1674781298]

@@ -49,6 +49,9 @@ func _physics_process(delta: float) -> void:
 	change_state(current_state.physics_process(delta))
 	var collision := move_and_collide(velocity * delta)
 	if collision:
+		if collision.get_collider() is RigidBody2D:
+			collision.get_collider().apply_impulse(velocity*0.1)
+			apply_children_scale(0.85, collision.get_collider())
 		velocity = velocity.bounce(collision.get_normal())
 		change_state(%IdleState)
 	clamp_velocity()
@@ -144,6 +147,13 @@ func take_damage(velocity: Vector2):
 	print("Health:", health, " Scale:", scale.x)
 
 
+func apply_children_scale(scale: float, target: Node2D):
+	if not target:
+		return
+	
+	if target.has_method("scale_children"):
+		target.scale_children(scale)
+		
 func update_texture():
 	if not is_node_ready():
 		return
