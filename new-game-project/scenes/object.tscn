@@ -3,15 +3,18 @@
 [ext_resource type="Script" uid="uid://bdp32hj3h4d84" path="res://scripts/object.gd" id="1_cbfvs"]
 [ext_resource type="Texture2D" uid="uid://u3jp0q2sed78" path="res://art/BSSCTG-PLATFORM_CYAN.svg" id="3_a0y2b"]
 
+[sub_resource type="PhysicsMaterial" id="PhysicsMaterial_cbfvs"]
+bounce = 0.5
+
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_cbfvs"]
 size = Vector2(512, 512)
 
 [node name="Object" type="RigidBody2D" unique_id=2014205349]
 collision_layer = 4
 collision_mask = 6
+physics_material_override = SubResource("PhysicsMaterial_cbfvs")
 gravity_scale = 0.0
 script = ExtResource("1_cbfvs")
-fixed = null
 metadata/_custom_type_script = "uid://b4ugb67jycp4v"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=420492729]

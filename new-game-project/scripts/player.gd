@@ -49,19 +49,33 @@ func _physics_process(delta: float) -> void:
 	change_state(current_state.physics_process(delta))
 	var collision := move_and_collide(velocity * delta)
 	if collision:
+		var current_scale: float = scale.x
+		var impact_force: float = velocity.length() / current_scale
+		var shake_amount: float = clamp(impact_force * 0.15, 6.0, 18.0)
+		$"../Camera2D".shake(shake_amount)
+		play_hit_sound(impact_force)
+		$HitParticles.global_position = global_position
+		$HitParticles.restart()
 		if collision.get_collider() is RigidBody2D:
 			collision.get_collider().apply_impulse(velocity*0.1)
-			apply_children_scale(0.85, collision.get_collider())
+			apply_children_scale(-64, collision.get_collider())
 		velocity = velocity.bounce(collision.get_normal())
 		change_state(%IdleState)
 	clamp_velocity()
-	controller_direction = Input.get_vector("aim_left", "aim_right", "aim_up", "aim_down")
+	
+	
+	if Input.get_vector("aim_left", "aim_right", "aim_up", "aim_down") != Vector2.ZERO:
+		controller_direction = Input.get_vector("aim_left", "aim_right", "aim_up", "aim_down").normalized()
+	
 	
 
 
 func _process(delta: float) -> void:
 	if Engine.is_editor_hint():
 		return
+
+	var s: float = clamp(scale.x, 0.3, 1.0)
+	var max_speed: float = 3000.0 * pow(1.0 / s, 1.2)
 	change_state(current_state.process(delta))
 	
 
@@ -118,17 +132,6 @@ func take_damage(velocity: Vector2):
 	var damage: int = int(impact_force * 0.02)
 	damage = clamp(damage, 4, 30) # Prevent zero damage & absurd spikes
 	
-	# Convert impact to shake
-	var shake_amount: float = clamp(impact_force * 0.15, 6.0, 18.0)
-	Engine.time_scale = 0.2
-	await get_tree().create_timer(0.04, false, true).timeout
-	Engine.time_scale = 1
-	
-	$"../Camera2D".shake(shake_amount)
-	play_hit_sound(impact_force)
-	$HitParticles.global_position = global_position
-	$HitParticles.restart()
-	
 	modulate = Color(1.4, 1.4, 1.4)
 	await get_tree().create_timer(0.05).timeout
 	modulate = Color(1,1,1)
@@ -154,6 +157,7 @@ func apply_children_scale(scale: float, target: Node2D):
 	if target.has_method("scale_children"):
 		target.scale_children(scale)
 		
+		
 func update_texture():
 	if not is_node_ready():
 		return
@@ -177,7 +181,7 @@ func get_speed_multiplier() -> float:
 
 func clamp_velocity():
 	var s: float = clamp(scale.x, 0.3, 1.0)
-	var max_speed: float = 1200.0 * pow(1.0 / s, 1.2)
+	var max_speed: float = 3000.0 * pow(1.0 / s, 1.2)
 	
 	if velocity.length() > max_speed:
 		velocity = velocity.normalized() * max_speed

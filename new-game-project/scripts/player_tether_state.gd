@@ -4,7 +4,7 @@ class_name PlayerStateTether extends PlayerState
 var tether_point: Vector2 = Vector2.ZERO
 var tether_length: float = 100.0
 var tether_target: Node2D
-@export var max_tether_length: float = 650.0
+@export var max_tether_length: float = 1000.0
 @export var radial_pull_strength: float = 100.0
 @export var pull_speed: float = 100.0
 @export var constraint_strength: float = 2
@@ -65,8 +65,8 @@ func physics_process(delta: float) -> PlayerState:
 	player.velocity += radial_pull
 	
 	
-	player.apply_children_scale(radial_pull.length()*0.0301, tether_target)
+	player.apply_children_scale(radial_pull.length()*0.05, tether_target)
 	if tether_target is RigidBody2D:
-		tether_target.apply_force(radial_pull)
+		tether_target.apply_force(-radial_pull*2)
 	
 	return null

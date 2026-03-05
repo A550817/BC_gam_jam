@@ -17,8 +17,8 @@ config/icon="res://icon.svg"
 
 [display]
 
-window/size/viewport_width=2560
-window/size/viewport_height=1440
+window/size/viewport_width=2400
+window/size/viewport_height=1600
 
 [input]
 
@@ -34,22 +34,22 @@ controller_click={
 }
 aim_left={
 "deadzone": 0.2,
-"events": [Object(InputEventJoypadMotion,"resource_local_to_scene":false,"resource_name":"","device":-1,"axis":0,"axis_value":-1.0,"script":null)
+"events": [Object(InputEventJoypadMotion,"resource_local_to_scene":false,"resource_name":"","device":-1,"axis":2,"axis_value":-1.0,"script":null)
 ]
 }
 aim_right={
 "deadzone": 0.2,
-"events": [Object(InputEventJoypadMotion,"resource_local_to_scene":false,"resource_name":"","device":-1,"axis":0,"axis_value":1.0,"script":null)
+"events": [Object(InputEventJoypadMotion,"resource_local_to_scene":false,"resource_name":"","device":-1,"axis":2,"axis_value":1.0,"script":null)
 ]
 }
 aim_up={
 "deadzone": 0.2,
-"events": [Object(InputEventJoypadMotion,"resource_local_to_scene":false,"resource_name":"","device":-1,"axis":1,"axis_value":-1.0,"script":null)
+"events": [Object(InputEventJoypadMotion,"resource_local_to_scene":false,"resource_name":"","device":-1,"axis":3,"axis_value":-1.0,"script":null)
 ]
 }
 aim_down={
 "deadzone": 0.2,
-"events": [Object(InputEventJoypadMotion,"resource_local_to_scene":false,"resource_name":"","device":-1,"axis":1,"axis_value":1.0,"script":null)
+"events": [Object(InputEventJoypadMotion,"resource_local_to_scene":false,"resource_name":"","device":-1,"axis":3,"axis_value":1.0,"script":null)
 ]
 }
 

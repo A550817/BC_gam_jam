@@ -11,12 +11,14 @@ extends SoftBody2DRigidBody
 		$NinePatchRect.texture = value
 
 func scale_children(size: float):
-	w*=size
-	h*=size
-	$NinePatchRect.size = Vector2(w, h)
+	w+=size
+	w=max(w, 40)
+	h+=size
+	h=max(h, 40)
+	$NinePatchRect.size = Vector2(w-10, h-10)
 	$NinePatchRect.position = Vector2(-w/2, -h/2)
 	$CollisionShape2D.scale = Vector2(w/512, h/512)
-	mass = (w/512) * (h/512)
+	mass = (w/512) * (h/512) + 1
 
 func _ready() -> void:
 	freeze = fixed
