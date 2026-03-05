@@ -76,6 +76,12 @@ func _process(delta: float) -> void:
 
 	var s: float = clamp(scale.x, 0.3, 1.0)
 	var max_speed: float = 3000.0 * pow(1.0 / s, 1.2)
+	
+	if !is_controller:
+		$ReticleRotate.rotation = (get_global_mouse_position()-position).angle()
+	else:
+		$ReticleRotate.rotation = controller_direction.angle()
+	
 	change_state(current_state.process(delta))
 	
 
@@ -206,7 +212,6 @@ func play_hit_sound(impact_force: float):
 	
 	# Pitch variation
 	player.pitch_scale = randf_range(0.98, 1.02)
-	
 	# Volume scaling
 	var volume: float = clamp(impact_force / 900.0, 0.6, 1.2)
 	player.volume_db = linear_to_db(volume)

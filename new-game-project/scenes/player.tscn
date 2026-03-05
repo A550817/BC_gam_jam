@@ -4,6 +4,7 @@
 [ext_resource type="Script" uid="uid://cp0375ep7gop8" path="res://scripts/player_idle_state.gd" id="2_g2els"]
 [ext_resource type="Script" uid="uid://b3awd12rasfrv" path="res://scripts/player_tether_state.gd" id="3_qhqgy"]
 [ext_resource type="Script" uid="uid://db60ox5i7rpmd" path="res://scripts/player_hurt_state.gd" id="4_dqkch"]
+[ext_resource type="Texture2D" uid="uid://cp72qondpi0oa" path="res://art/BSSCTG-RETICULE.svg" id="5_qlg0r"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_g2els"]
 radius = 40.0
@@ -90,5 +91,13 @@ texture = SubResource("GradientTexture2D_tuyoq")
 one_shot = true
 explosiveness = 1.0
 process_material = SubResource("ParticleProcessMaterial_fjrip")
+
+[node name="ReticleRotate" type="Node2D" parent="." unique_id=1402879474]
+
+[node name="Sprite2D" type="Sprite2D" parent="ReticleRotate" unique_id=953442022]
+position = Vector2(60, 0)
+rotation = 1.5707964
+scale = Vector2(0.1, 0.1)
+texture = ExtResource("5_qlg0r")
 
 [connection signal="body_entered" from="Hitbox" to="." method="_on_hitbox_body_entered"]

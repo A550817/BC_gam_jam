@@ -54,9 +54,9 @@ environment = SubResource("Environment_hddm4")
 
 [node name="Object2" parent="." unique_id=2047639387 instance=ExtResource("2_qchbg")]
 position = Vector2(2727, 877)
-mass = 2.00391
-w = 513.0
-h = 513.0
+mass = 2.0078278
+w = 514.0
+h = 514.0
 texture = ExtResource("4_mm0a5")
 
 [node name="Camera2D" type="Camera2D" parent="." unique_id=1674781298]
