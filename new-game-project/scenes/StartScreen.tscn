@@ -1,0 +1,78 @@
+[gd_scene format=3 uid="uid://b41x1fmwja6iu"]
+
+[ext_resource type="Script" uid="uid://cq2ddpphpgvxb" path="res://scripts/start_screen.gd" id="1_2dvb4"]
+[ext_resource type="Texture2D" uid="uid://xw312ni1cmks" path="res://art/BSSCTG-KEYART_V1.svg" id="1_4vrcr"]
+[ext_resource type="Texture2D" uid="uid://u3jp0q2sed78" path="res://art/BSSCTG-PLATFORM_CYAN.svg" id="2_pswtb"]
+[ext_resource type="Texture2D" uid="uid://vb2vw0n2skc4" path="res://art/BSSCTG-PLATFORM_YELLOW.svg" id="3_a0vbq"]
+[ext_resource type="FontFile" uid="uid://d3xhchpjyhgoq" path="res://art/Audiowide-Regular.ttf" id="3_gn4gw"]
+[ext_resource type="FontFile" uid="uid://btm6hirbgktci" path="res://art/Orbitron Medium.otf" id="4_nj7f0"]
+
+[sub_resource type="Environment" id="Environment_4vrcr"]
+background_mode = 3
+glow_enabled = true
+glow_intensity = 8.0
+glow_bloom = 1.0
+
+[node name="CanvasLayer" type="CanvasLayer" unique_id=1370289346]
+script = ExtResource("1_2dvb4")
+
+[node name="BssctgKeyartV1" type="Sprite2D" parent="." unique_id=1690860612]
+position = Vector2(1152, 864)
+texture = ExtResource("1_4vrcr")
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="." unique_id=14220878]
+environment = SubResource("Environment_4vrcr")
+
+[node name="StartButton" type="Button" parent="." unique_id=1418189709]
+offset_left = 1281.0
+offset_top = 1336.0
+offset_right = 2071.0
+offset_bottom = 1464.0
+theme_override_fonts/font = ExtResource("3_gn4gw")
+theme_override_font_sizes/font_size = 80
+text = "Start!"
+
+[node name="NinePatchRect" type="NinePatchRect" parent="StartButton" unique_id=153669545]
+layout_mode = 0
+offset_right = 793.0
+offset_bottom = 130.0
+texture = ExtResource("2_pswtb")
+patch_margin_left = 17
+patch_margin_top = 19
+patch_margin_right = 18
+patch_margin_bottom = 13
+
+[node name="TutorialButton" type="Button" parent="." unique_id=528076256]
+offset_left = 307.0
+offset_top = 1344.0
+offset_right = 1097.0
+offset_bottom = 1472.0
+theme_override_fonts/font = ExtResource("3_gn4gw")
+theme_override_font_sizes/font_size = 80
+text = "Instructions"
+
+[node name="NinePatchRect" type="NinePatchRect" parent="TutorialButton" unique_id=1660453588]
+layout_mode = 0
+offset_right = 793.0
+offset_bottom = 130.0
+texture = ExtResource("3_a0vbq")
+patch_margin_left = 17
+patch_margin_top = 19
+patch_margin_right = 18
+patch_margin_bottom = 13
+
+[node name="Label" type="Label" parent="." unique_id=478767141]
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -733.0
+offset_top = 85.0
+offset_right = 733.0
+offset_bottom = 385.0
+grow_horizontal = 2
+theme_override_fonts/font = ExtResource("4_nj7f0")
+theme_override_font_sizes/font_size = 300
+text = "BSSCTG"
+
+[connection signal="pressed" from="StartButton" to="." method="_on_start_button_pressed"]
+[connection signal="pressed" from="TutorialButton" to="." method="_on_tutorial_button_pressed"]

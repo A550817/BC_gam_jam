@@ -11,9 +11,13 @@ config_version=5
 [application]
 
 config/name="BC Jam"
-run/main_scene="uid://c5tch4a2pi7am"
+run/main_scene="uid://b41x1fmwja6iu"
 config/features=PackedStringArray("4.6", "GL Compatibility")
 config/icon="res://icon.svg"
+
+[autoload]
+
+TransitionLayer="*uid://18tfcf5emkhr"
 
 [display]
 

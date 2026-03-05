@@ -1,0 +1,56 @@
+[gd_scene format=3 uid="uid://cy46rf2th0obb"]
+
+[ext_resource type="FontFile" uid="uid://btm6hirbgktci" path="res://art/Orbitron Medium.otf" id="1_jelwi"]
+[ext_resource type="Script" uid="uid://dr7l6v3uc8vai" path="res://scripts/tutorial_scene.gd" id="1_tbeqj"]
+[ext_resource type="FontFile" uid="uid://l2montbhasgn" path="res://art/Rajdhani-Regular.ttf" id="2_urufc"]
+[ext_resource type="FontFile" uid="uid://d3xhchpjyhgoq" path="res://art/Audiowide-Regular.ttf" id="4_k7w8g"]
+[ext_resource type="Texture2D" uid="uid://vb2vw0n2skc4" path="res://art/BSSCTG-PLATFORM_YELLOW.svg" id="5_ki3mu"]
+
+[node name="TutorialScene" type="Node2D" unique_id=1230075770]
+script = ExtResource("1_tbeqj")
+
+[node name="Label" type="Label" parent="." unique_id=1937599812]
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = 700.0
+offset_top = 50.0
+offset_right = 1584.0
+offset_bottom = 250.0
+grow_horizontal = 2
+theme_override_fonts/font = ExtResource("1_jelwi")
+theme_override_font_sizes/font_size = 200
+text = "Tutorial!"
+
+[node name="Label2" type="Label" parent="." unique_id=42439644]
+anchors_preset = 10
+anchor_right = 1.0
+offset_left = 218.0
+offset_top = 777.0
+offset_right = 1849.0
+offset_bottom = 877.0
+grow_horizontal = 2
+theme_override_fonts/font = ExtResource("2_urufc")
+theme_override_font_sizes/font_size = 100
+text = "Blah blah blah (insert tutorial stuff here)"
+
+[node name="BackButton" type="Button" parent="." unique_id=1809114437]
+offset_left = 646.0
+offset_top = 1391.0
+offset_right = 1436.0
+offset_bottom = 1519.0
+theme_override_fonts/font = ExtResource("4_k7w8g")
+theme_override_font_sizes/font_size = 80
+text = "Back"
+
+[node name="NinePatchRect" type="NinePatchRect" parent="BackButton" unique_id=229116217]
+layout_mode = 0
+offset_right = 793.0
+offset_bottom = 130.0
+texture = ExtResource("5_ki3mu")
+patch_margin_left = 17
+patch_margin_top = 19
+patch_margin_right = 18
+patch_margin_bottom = 13
+
+[connection signal="pressed" from="BackButton" to="." method="_on_back_button_pressed"]
