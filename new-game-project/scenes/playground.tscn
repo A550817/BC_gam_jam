@@ -1,5 +1,6 @@
 [gd_scene format=3 uid="uid://c5tch4a2pi7am"]
 
+[ext_resource type="Script" uid="uid://cis8aj4562ear" path="res://scripts/playground.gd" id="1_2ilni"]
 [ext_resource type="PackedScene" uid="uid://be8qbmt0fe144" path="res://scenes/player.tscn" id="1_hddm4"]
 [ext_resource type="AudioStream" uid="uid://byr4oeddeh7jv" path="res://audio/impactPunch_medium_000.ogg" id="2_j30dx"]
 [ext_resource type="PackedScene" uid="uid://bv0qi4ki0bbxn" path="res://scenes/object.tscn" id="2_qchbg"]
@@ -32,7 +33,62 @@ glow_bloom = 1.0
 [sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_j30dx"]
 normal = Vector2(0, 1)
 
+[sub_resource type="Animation" id="Animation_2ilni"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("ColorRect:color")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_d3jfy"]
+resource_name = "fade_in"
+length = 0.2
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("ColorRect:color")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.2),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 0.34509805)]
+}
+
+[sub_resource type="Animation" id="Animation_q6c7b"]
+resource_name = "fade_out"
+length = 0.2
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("ColorRect:color")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.2),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 0.34509805), Color(1, 1, 1, 0)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_x2tju"]
+_data = {
+&"RESET": SubResource("Animation_2ilni"),
+&"fade_in": SubResource("Animation_d3jfy"),
+&"fade_out": SubResource("Animation_q6c7b")
+}
+
 [node name="Playground" type="Node2D" unique_id=2036895998]
+script = ExtResource("1_2ilni")
 
 [node name="Player" parent="." unique_id=1030372719 instance=ExtResource("1_hddm4")]
 position = Vector2(491, 329)
@@ -54,9 +110,9 @@ environment = SubResource("Environment_hddm4")
 
 [node name="Object2" parent="." unique_id=2047639387 instance=ExtResource("2_qchbg")]
 position = Vector2(2727, 877)
-mass = 2.011753
-w = 515.0
-h = 515.0
+mass = 2.015686
+w = 516.0
+h = 516.0
 texture = ExtResource("4_mm0a5")
 
 [node name="Camera2D" type="Camera2D" parent="." unique_id=1674781298]
@@ -107,3 +163,16 @@ patch_margin_left = 20
 patch_margin_top = 20
 patch_margin_right = 20
 patch_margin_bottom = 20
+
+[node name="CanvasLayer" type="CanvasLayer" parent="." unique_id=1873021847]
+
+[node name="ColorRect" type="ColorRect" parent="CanvasLayer" unique_id=1715304389]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(1, 1, 1, 0)
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="CanvasLayer" unique_id=1686495968]
+libraries/ = SubResource("AnimationLibrary_x2tju")
