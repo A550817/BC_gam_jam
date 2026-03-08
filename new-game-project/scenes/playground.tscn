@@ -17,6 +17,7 @@
 [ext_resource type="AudioStream" uid="uid://cwwsnltexsgu7" path="res://audio/impactPunch_heavy_003.ogg" id="10_62tve"]
 [ext_resource type="AudioStream" uid="uid://bum73s17ate17" path="res://audio/impactPunch_heavy_004.ogg" id="11_rdeg0"]
 [ext_resource type="AudioStream" uid="uid://p7beux8imlu5" path="res://audio/Runway.wav" id="17_2ilni"]
+[ext_resource type="FontFile" uid="uid://d3xhchpjyhgoq" path="res://art/Audiowide-Regular.ttf" id="18_d3jfy"]
 
 [sub_resource type="CompressedTexture2D" id="CompressedTexture2D_kddj0"]
 load_path = "res://.godot/imported/BSSCTG-PLAYER1.svg-4c3a65dda90af5b9d2441c3abdb850d5.ctex"
@@ -88,16 +89,18 @@ _data = {
 }
 
 [node name="Playground" type="Node2D" unique_id=2036895998]
-script = ExtResource("1_2ilni")
+process_mode = 1
 
-[node name="Player" parent="." unique_id=1030372719 instance=ExtResource("1_hddm4")]
+[node name="Game" type="Node2D" parent="." unique_id=1527273278]
+
+[node name="Player" parent="Game" unique_id=1030372719 instance=ExtResource("1_hddm4")]
 position = Vector2(491, 329)
 small_hit_sounds = Array[AudioStream]([ExtResource("2_j30dx"), ExtResource("3_2ilni"), ExtResource("4_d3jfy"), ExtResource("5_q6c7b"), ExtResource("6_x2tju")])
 heavy_hit_sounds = Array[AudioStream]([ExtResource("7_wm6m6"), ExtResource("8_ocmmj"), ExtResource("9_vwj6b"), ExtResource("10_62tve"), ExtResource("11_rdeg0")])
 drag_strength = 0.25
 texture = SubResource("CompressedTexture2D_kddj0")
 
-[node name="Player2" parent="." unique_id=388737432 instance=ExtResource("1_hddm4")]
+[node name="Player2" parent="Game" unique_id=388737432 instance=ExtResource("1_hddm4")]
 position = Vector2(882, 582)
 small_hit_sounds = Array[AudioStream]([ExtResource("2_j30dx"), ExtResource("3_2ilni"), ExtResource("4_d3jfy"), ExtResource("5_q6c7b"), ExtResource("6_x2tju")])
 heavy_hit_sounds = Array[AudioStream]([ExtResource("7_wm6m6"), ExtResource("8_ocmmj"), ExtResource("9_vwj6b"), ExtResource("10_62tve"), ExtResource("11_rdeg0")])
@@ -105,48 +108,48 @@ drag_strength = 0.25
 is_controller = true
 texture = SubResource("CompressedTexture2D_q8s1k")
 
-[node name="WorldEnvironment" type="WorldEnvironment" parent="." unique_id=152811862]
+[node name="WorldEnvironment" type="WorldEnvironment" parent="Game" unique_id=152811862]
 environment = SubResource("Environment_hddm4")
 
-[node name="Object2" parent="." unique_id=2047639387 instance=ExtResource("2_qchbg")]
+[node name="Object2" parent="Game" unique_id=2047639387 instance=ExtResource("2_qchbg")]
 position = Vector2(2727, 877)
 mass = 2.015686
 w = 516.0
 h = 516.0
 texture = ExtResource("4_mm0a5")
 
-[node name="Camera2D" type="Camera2D" parent="." unique_id=1674781298]
+[node name="Camera2D" type="Camera2D" parent="Game" unique_id=1674781298]
 position = Vector2(1200, 800)
 script = ExtResource("6_o6wi6")
 
-[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="." unique_id=28148514]
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="Game" unique_id=28148514]
 stream = ExtResource("17_2ilni")
 bus = &"Music"
 
-[node name="StaticBody2D" type="StaticBody2D" parent="." unique_id=1450808253]
+[node name="StaticBody2D" type="StaticBody2D" parent="Game" unique_id=1450808253]
 collision_layer = 2
 collision_mask = 6
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D" unique_id=1965325985]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Game/StaticBody2D" unique_id=1965325985]
 position = Vector2(0, 35)
 shape = SubResource("WorldBoundaryShape2D_j30dx")
 
-[node name="CollisionShape2D2" type="CollisionShape2D" parent="StaticBody2D" unique_id=346439670]
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="Game/StaticBody2D" unique_id=346439670]
 position = Vector2(35, 0)
 rotation = -1.5707964
 shape = SubResource("WorldBoundaryShape2D_j30dx")
 
-[node name="CollisionShape2D3" type="CollisionShape2D" parent="StaticBody2D" unique_id=1614561930]
+[node name="CollisionShape2D3" type="CollisionShape2D" parent="Game/StaticBody2D" unique_id=1614561930]
 position = Vector2(0, 1565)
 rotation = 3.1415927
 shape = SubResource("WorldBoundaryShape2D_j30dx")
 
-[node name="CollisionShape2D4" type="CollisionShape2D" parent="StaticBody2D" unique_id=503636567]
+[node name="CollisionShape2D4" type="CollisionShape2D" parent="Game/StaticBody2D" unique_id=503636567]
 position = Vector2(2365, 0)
 rotation = 1.5707964
 shape = SubResource("WorldBoundaryShape2D_j30dx")
 
-[node name="NinePatchRect" type="NinePatchRect" parent="." unique_id=1228933849]
+[node name="NinePatchRect" type="NinePatchRect" parent="Game" unique_id=1228933849]
 anchors_preset = 8
 anchor_left = 0.5
 anchor_top = 0.5
@@ -164,9 +167,13 @@ patch_margin_top = 20
 patch_margin_right = 20
 patch_margin_bottom = 20
 
-[node name="CanvasLayer" type="CanvasLayer" parent="." unique_id=1873021847]
+[node name="Ui" type="Node2D" parent="." unique_id=692342981]
+process_mode = 3
+script = ExtResource("1_2ilni")
 
-[node name="ColorRect" type="ColorRect" parent="CanvasLayer" unique_id=1715304389]
+[node name="CanvasLayer" type="CanvasLayer" parent="Ui" unique_id=1873021847]
+
+[node name="ColorRect" type="ColorRect" parent="Ui/CanvasLayer" unique_id=1715304389]
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
@@ -174,5 +181,48 @@ grow_horizontal = 2
 grow_vertical = 2
 color = Color(1, 1, 1, 0)
 
-[node name="AnimationPlayer" type="AnimationPlayer" parent="CanvasLayer" unique_id=1686495968]
+[node name="AnimationPlayer" type="AnimationPlayer" parent="Ui/CanvasLayer" unique_id=1686495968]
 libraries/ = SubResource("AnimationLibrary_x2tju")
+
+[node name="ContinueButton" type="Button" parent="Ui/CanvasLayer" unique_id=1165421169]
+visible = false
+offset_left = 1281.0
+offset_top = 1336.0
+offset_right = 2071.0
+offset_bottom = 1464.0
+theme_override_fonts/font = ExtResource("18_d3jfy")
+theme_override_font_sizes/font_size = 80
+text = "Continue!"
+
+[node name="NinePatchRect" type="NinePatchRect" parent="Ui/CanvasLayer/ContinueButton" unique_id=860293442]
+layout_mode = 0
+offset_right = 793.0
+offset_bottom = 130.0
+texture = ExtResource("5_o6wi6")
+patch_margin_left = 17
+patch_margin_top = 19
+patch_margin_right = 18
+patch_margin_bottom = 13
+
+[node name="BackButton" type="Button" parent="Ui/CanvasLayer" unique_id=1622963686]
+visible = false
+offset_left = 254.0
+offset_top = 1333.0
+offset_right = 1044.0
+offset_bottom = 1461.0
+theme_override_fonts/font = ExtResource("18_d3jfy")
+theme_override_font_sizes/font_size = 80
+text = "Back"
+
+[node name="NinePatchRect" type="NinePatchRect" parent="Ui/CanvasLayer/BackButton" unique_id=828093164]
+layout_mode = 0
+offset_right = 790.0
+offset_bottom = 128.0
+texture = ExtResource("4_mm0a5")
+patch_margin_left = 17
+patch_margin_top = 19
+patch_margin_right = 18
+patch_margin_bottom = 13
+
+[connection signal="pressed" from="Ui/CanvasLayer/ContinueButton" to="Ui" method="_on_continue_button_pressed"]
+[connection signal="pressed" from="Ui/CanvasLayer/BackButton" to="Ui" method="_on_back_button_pressed"]

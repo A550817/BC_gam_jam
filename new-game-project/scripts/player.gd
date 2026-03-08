@@ -217,3 +217,7 @@ func play_hit_sound(impact_force: float):
 	player.volume_db = linear_to_db(volume)
 	
 	player.play()
+
+
+func _on_back_button_pressed() -> void:
+	pass # Replace with function body.

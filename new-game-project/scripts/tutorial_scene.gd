@@ -1,7 +1,7 @@
-extends Node2D
+extends CanvasLayer
 
 
 
 
 func _on_back_button_pressed() -> void:
-	TransitionLayer.change_scene(preload("res://scenes/StartScreen.tscn"))
+	TransitionLayer.change_scene(load("res://scenes/StartScreen.tscn"))

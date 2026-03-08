@@ -6,39 +6,47 @@
 [ext_resource type="FontFile" uid="uid://d3xhchpjyhgoq" path="res://art/Audiowide-Regular.ttf" id="4_k7w8g"]
 [ext_resource type="Texture2D" uid="uid://vb2vw0n2skc4" path="res://art/BSSCTG-PLATFORM_YELLOW.svg" id="5_ki3mu"]
 
-[node name="TutorialScene" type="Node2D" unique_id=1230075770]
+[node name="TutorialScene" type="CanvasLayer" unique_id=1656756509]
 script = ExtResource("1_tbeqj")
 
 [node name="Label" type="Label" parent="." unique_id=1937599812]
 anchors_preset = 5
 anchor_left = 0.5
 anchor_right = 0.5
-offset_left = 700.0
-offset_top = 50.0
-offset_right = 1584.0
-offset_bottom = 250.0
+offset_left = -442.0
+offset_top = 42.0
+offset_right = 442.0
+offset_bottom = 242.0
 grow_horizontal = 2
 theme_override_fonts/font = ExtResource("1_jelwi")
 theme_override_font_sizes/font_size = 200
 text = "Tutorial!"
 
 [node name="Label2" type="Label" parent="." unique_id=42439644]
-anchors_preset = 10
+anchors_preset = 14
+anchor_top = 0.5
 anchor_right = 1.0
-offset_left = 218.0
-offset_top = 777.0
-offset_right = 1849.0
-offset_bottom = 877.0
+anchor_bottom = 0.5
+offset_top = -50.0
+offset_bottom = 50.0
 grow_horizontal = 2
+grow_vertical = 2
 theme_override_fonts/font = ExtResource("2_urufc")
 theme_override_font_sizes/font_size = 100
 text = "Blah blah blah (insert tutorial stuff here)"
 
 [node name="BackButton" type="Button" parent="." unique_id=1809114437]
-offset_left = 646.0
-offset_top = 1391.0
-offset_right = 1436.0
-offset_bottom = 1519.0
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -395.0
+offset_top = -179.0
+offset_right = 395.0
+offset_bottom = -51.0
+grow_horizontal = 2
+grow_vertical = 0
 theme_override_fonts/font = ExtResource("4_k7w8g")
 theme_override_font_sizes/font_size = 80
 text = "Back"
