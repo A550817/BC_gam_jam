@@ -11,6 +11,7 @@ func toggle_pause():
 		$CanvasLayer/ContinueButton.hide()
 		$CanvasLayer/BackButton.hide()
 		$CanvasLayer/Label.hide()
+		$CanvasLayer/RestartButton.hide()
 		$CanvasLayer/AnimationPlayer.play("fade_out")
 		await $CanvasLayer/AnimationPlayer.animation_finished
 		get_tree().paused = false
@@ -20,6 +21,7 @@ func toggle_pause():
 		$CanvasLayer/ContinueButton.show()
 		$CanvasLayer/BackButton.show()
 		$CanvasLayer/Label.show()
+		$CanvasLayer/RestartButton.show()
 
 	
 	is_paused = !is_paused
@@ -31,5 +33,10 @@ func _on_continue_button_pressed() -> void:
 
 func _on_back_button_pressed() -> void:
 	get_tree().paused = false
-	print(ResourceLoader.exists("res://scenes/StartScreen.tscn"))
 	TransitionLayer.change_scene(load("res://scenes/StartScreen.tscn"))
+
+
+func _on_restart_button_pressed() -> void:
+	get_tree().paused = false
+	TransitionLayer.change_scene(load("res://scenes/StartScreen.tscn"))
+	TransitionLayer.change_scene(load("res://scenes/playground.tscn"))

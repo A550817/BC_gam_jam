@@ -18,6 +18,7 @@
 [ext_resource type="AudioStream" uid="uid://bum73s17ate17" path="res://audio/impactPunch_heavy_004.ogg" id="11_rdeg0"]
 [ext_resource type="AudioStream" uid="uid://p7beux8imlu5" path="res://audio/Runway.wav" id="17_2ilni"]
 [ext_resource type="FontFile" uid="uid://d3xhchpjyhgoq" path="res://art/Audiowide-Regular.ttf" id="18_d3jfy"]
+[ext_resource type="Texture2D" uid="uid://7110apb2j7vm" path="res://art/BSSCTG-PLATFORM_MAGENTA.svg" id="19_q6c7b"]
 
 [sub_resource type="CompressedTexture2D" id="CompressedTexture2D_kddj0"]
 load_path = "res://.godot/imported/BSSCTG-PLAYER1.svg-4c3a65dda90af5b9d2441c3abdb850d5.ctex"
@@ -186,18 +187,25 @@ libraries/ = SubResource("AnimationLibrary_x2tju")
 
 [node name="ContinueButton" type="Button" parent="Ui/CanvasLayer" unique_id=1165421169]
 visible = false
-offset_left = 1281.0
-offset_top = 1336.0
-offset_right = 2071.0
-offset_bottom = 1464.0
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -645.0
+offset_top = -190.0
+offset_right = -45.0
+offset_bottom = -40.0
+grow_horizontal = 0
+grow_vertical = 0
 theme_override_fonts/font = ExtResource("18_d3jfy")
 theme_override_font_sizes/font_size = 80
 text = "Continue!"
 
 [node name="NinePatchRect" type="NinePatchRect" parent="Ui/CanvasLayer/ContinueButton" unique_id=860293442]
 layout_mode = 0
-offset_right = 793.0
-offset_bottom = 130.0
+offset_right = 600.0
+offset_bottom = 150.0
 texture = ExtResource("5_o6wi6")
 patch_margin_left = 17
 patch_margin_top = 19
@@ -206,18 +214,22 @@ patch_margin_bottom = 13
 
 [node name="BackButton" type="Button" parent="Ui/CanvasLayer" unique_id=1622963686]
 visible = false
-offset_left = 254.0
-offset_top = 1333.0
-offset_right = 1044.0
-offset_bottom = 1461.0
+anchors_preset = 2
+anchor_top = 1.0
+anchor_bottom = 1.0
+offset_left = 20.0
+offset_top = -190.0
+offset_right = 620.0
+offset_bottom = -40.0
+grow_vertical = 0
 theme_override_fonts/font = ExtResource("18_d3jfy")
 theme_override_font_sizes/font_size = 80
 text = "Back"
 
 [node name="NinePatchRect" type="NinePatchRect" parent="Ui/CanvasLayer/BackButton" unique_id=828093164]
 layout_mode = 0
-offset_right = 790.0
-offset_bottom = 128.0
+offset_right = 600.0
+offset_bottom = 150.0
 texture = ExtResource("4_mm0a5")
 patch_margin_left = 17
 patch_margin_top = 19
@@ -238,6 +250,36 @@ theme_override_fonts/font = ExtResource("18_d3jfy")
 theme_override_font_sizes/font_size = 300
 text = "Paused"
 
+[node name="RestartButton" type="Button" parent="Ui/CanvasLayer" unique_id=232799780]
+visible = false
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -300.0
+offset_top = -190.0
+offset_right = 300.0
+offset_bottom = -40.0
+grow_horizontal = 2
+grow_vertical = 0
+theme_override_fonts/font = ExtResource("18_d3jfy")
+theme_override_font_sizes/font_size = 80
+text = "Restart"
+
+[node name="NinePatchRect" type="NinePatchRect" parent="Ui/CanvasLayer/RestartButton" unique_id=1315101407]
+layout_mode = 0
+offset_right = 600.0
+offset_bottom = 150.0
+texture = ExtResource("19_q6c7b")
+patch_margin_left = 17
+patch_margin_top = 19
+patch_margin_right = 18
+patch_margin_bottom = 13
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="Ui" unique_id=581975349]
+environment = SubResource("Environment_hddm4")
+
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="." unique_id=322648854]
 stream = ExtResource("17_2ilni")
 autoplay = true
@@ -245,3 +287,4 @@ bus = &"Music"
 
 [connection signal="pressed" from="Ui/CanvasLayer/ContinueButton" to="Ui" method="_on_continue_button_pressed"]
 [connection signal="pressed" from="Ui/CanvasLayer/BackButton" to="Ui" method="_on_back_button_pressed"]
+[connection signal="pressed" from="Ui/CanvasLayer/RestartButton" to="Ui" method="_on_restart_button_pressed"]
