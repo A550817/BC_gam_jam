@@ -133,10 +133,27 @@ func take_damage(velocity: Vector2):
 	# --- Calculate impact force ---
 	var current_scale: float = scale.x
 	var impact_force: float = velocity.length() / current_scale
+	print(impact_force)
 	
 	# Convert impact to damage
 	var damage: int = int(impact_force * 0.02)
 	damage = clamp(damage, 4, 30) # Prevent zero damage & absurd spikes
+	
+		# Convert impact to shake
+	var shake_amount: float = clamp(impact_force * 0.15, 6.0, 18.0)
+	Engine.time_scale = 0.0
+	await get_tree().create_timer(0.04, true, false, true).timeout
+	Engine.time_scale = 1
+	
+	$"../Camera2D".shake(shake_amount)
+	play_hit_sound(impact_force)
+	$HitParticles.global_position = global_position
+	if impact_force >= 900:
+		$HitParticles.amount = 8
+	else:
+		$HitParticles.amount = 4
+	$HitParticles.restart()
+	
 	
 	modulate = Color(1.4, 1.4, 1.4)
 	await get_tree().create_timer(0.05).timeout
@@ -197,7 +214,7 @@ func play_hit_sound(impact_force: float):
 	var player := $HitPlayer
 	
 	var sounds: Array[AudioStream]
-	var is_heavy := impact_force > 600.0
+	var is_heavy := impact_force > 900.0
 	
 	if is_heavy:
 		sounds = heavy_hit_sounds
@@ -217,7 +234,3 @@ func play_hit_sound(impact_force: float):
 	player.volume_db = linear_to_db(volume)
 	
 	player.play()
-
-
-func _on_back_button_pressed() -> void:
-	pass # Replace with function body.

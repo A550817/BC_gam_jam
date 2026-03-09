@@ -113,9 +113,9 @@ environment = SubResource("Environment_hddm4")
 
 [node name="Object2" parent="Game" unique_id=2047639387 instance=ExtResource("2_qchbg")]
 position = Vector2(2727, 877)
-mass = 2.015686
-w = 516.0
-h = 516.0
+mass = 2.0235748
+w = 518.0
+h = 518.0
 texture = ExtResource("4_mm0a5")
 
 [node name="Camera2D" type="Camera2D" parent="Game" unique_id=1674781298]
@@ -223,6 +223,25 @@ patch_margin_left = 17
 patch_margin_top = 19
 patch_margin_right = 18
 patch_margin_bottom = 13
+
+[node name="Label" type="Label" parent="Ui/CanvasLayer" unique_id=2014761343]
+visible = false
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -33.0
+offset_top = 34.0
+offset_right = 33.0
+offset_bottom = 57.0
+grow_horizontal = 2
+theme_override_fonts/font = ExtResource("18_d3jfy")
+theme_override_font_sizes/font_size = 300
+text = "Paused"
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="." unique_id=322648854]
+stream = ExtResource("17_2ilni")
+autoplay = true
+bus = &"Music"
 
 [connection signal="pressed" from="Ui/CanvasLayer/ContinueButton" to="Ui" method="_on_continue_button_pressed"]
 [connection signal="pressed" from="Ui/CanvasLayer/BackButton" to="Ui" method="_on_back_button_pressed"]

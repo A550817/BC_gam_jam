@@ -5,6 +5,7 @@
 [ext_resource type="FontFile" uid="uid://l2montbhasgn" path="res://art/Rajdhani-Regular.ttf" id="2_urufc"]
 [ext_resource type="FontFile" uid="uid://d3xhchpjyhgoq" path="res://art/Audiowide-Regular.ttf" id="4_k7w8g"]
 [ext_resource type="Texture2D" uid="uid://vb2vw0n2skc4" path="res://art/BSSCTG-PLATFORM_YELLOW.svg" id="5_ki3mu"]
+[ext_resource type="AudioStream" uid="uid://bgb6cbtjcu8hg" path="res://audio/Cipher2.mp3" id="6_k7w8g"]
 
 [node name="TutorialScene" type="CanvasLayer" unique_id=1656756509]
 script = ExtResource("1_tbeqj")
@@ -60,5 +61,10 @@ patch_margin_left = 17
 patch_margin_top = 19
 patch_margin_right = 18
 patch_margin_bottom = 13
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="." unique_id=1740248614]
+stream = ExtResource("6_k7w8g")
+autoplay = true
+bus = &"Music"
 
 [connection signal="pressed" from="BackButton" to="." method="_on_back_button_pressed"]

@@ -6,6 +6,7 @@
 [ext_resource type="Texture2D" uid="uid://vb2vw0n2skc4" path="res://art/BSSCTG-PLATFORM_YELLOW.svg" id="3_a0vbq"]
 [ext_resource type="FontFile" uid="uid://d3xhchpjyhgoq" path="res://art/Audiowide-Regular.ttf" id="3_gn4gw"]
 [ext_resource type="FontFile" uid="uid://btm6hirbgktci" path="res://art/Orbitron Medium.otf" id="4_nj7f0"]
+[ext_resource type="AudioStream" uid="uid://bgb6cbtjcu8hg" path="res://audio/Cipher2.mp3" id="7_0y1d7"]
 
 [sub_resource type="Environment" id="Environment_4vrcr"]
 background_mode = 3
@@ -73,6 +74,11 @@ grow_horizontal = 2
 theme_override_fonts/font = ExtResource("4_nj7f0")
 theme_override_font_sizes/font_size = 300
 text = "BSSCTG"
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="." unique_id=62456604]
+stream = ExtResource("7_0y1d7")
+autoplay = true
+bus = &"Music"
 
 [connection signal="pressed" from="StartButton" to="." method="_on_start_button_pressed"]
 [connection signal="pressed" from="TutorialButton" to="." method="_on_tutorial_button_pressed"]
