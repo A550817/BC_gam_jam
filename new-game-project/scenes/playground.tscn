@@ -16,6 +16,7 @@
 [ext_resource type="AudioStream" uid="uid://b4goeyt0hrl7d" path="res://audio/impactPunch_heavy_002.ogg" id="9_vwj6b"]
 [ext_resource type="AudioStream" uid="uid://cwwsnltexsgu7" path="res://audio/impactPunch_heavy_003.ogg" id="10_62tve"]
 [ext_resource type="AudioStream" uid="uid://bum73s17ate17" path="res://audio/impactPunch_heavy_004.ogg" id="11_rdeg0"]
+[ext_resource type="AudioStream" uid="uid://b2wvf6g506ny2" path="res://audio/Future.mp3" id="15_q6c7b"]
 [ext_resource type="AudioStream" uid="uid://p7beux8imlu5" path="res://audio/Runway.wav" id="17_2ilni"]
 [ext_resource type="FontFile" uid="uid://d3xhchpjyhgoq" path="res://art/Audiowide-Regular.ttf" id="18_d3jfy"]
 
@@ -112,10 +113,29 @@ texture = SubResource("CompressedTexture2D_q8s1k")
 environment = SubResource("Environment_hddm4")
 
 [node name="Object2" parent="Game" unique_id=2047639387 instance=ExtResource("2_qchbg")]
-position = Vector2(2727, 877)
-mass = 2.0235748
-w = 518.0
-h = 518.0
+position = Vector2(1831, 1121)
+mass = 2.0275307
+h = 128.0
+texture = ExtResource("4_mm0a5")
+
+[node name="Object3" parent="Game" unique_id=2014205349 instance=ExtResource("2_qchbg")]
+position = Vector2(443, 1254)
+mass = 1.2524452
+w = 513.0
+h = 129.0
+texture = ExtResource("4_mm0a5")
+
+[node name="Object4" parent="Game" unique_id=1847056009 instance=ExtResource("2_qchbg")]
+position = Vector2(1118, 773)
+mass = 1.2548981
+w = 514.0
+h = 130.0
+texture = ExtResource("4_mm0a5")
+
+[node name="Object5" parent="Game" unique_id=1134822862 instance=ExtResource("2_qchbg")]
+position = Vector2(1831, 427)
+mass = 1.2524452
+w = 128.0
 texture = ExtResource("4_mm0a5")
 
 [node name="Camera2D" type="Camera2D" parent="Game" unique_id=1674781298]
@@ -150,6 +170,7 @@ rotation = 1.5707964
 shape = SubResource("WorldBoundaryShape2D_j30dx")
 
 [node name="NinePatchRect" type="NinePatchRect" parent="Game" unique_id=1228933849]
+visible = false
 anchors_preset = 8
 anchor_left = 0.5
 anchor_top = 0.5
@@ -169,11 +190,14 @@ patch_margin_bottom = 20
 
 [node name="Ui" type="Node2D" parent="." unique_id=692342981]
 process_mode = 3
+visible = false
 script = ExtResource("1_2ilni")
 
 [node name="CanvasLayer" type="CanvasLayer" parent="Ui" unique_id=1873021847]
+visible = false
 
 [node name="ColorRect" type="ColorRect" parent="Ui/CanvasLayer" unique_id=1715304389]
+visible = false
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
@@ -239,7 +263,7 @@ theme_override_font_sizes/font_size = 300
 text = "Paused"
 
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="." unique_id=322648854]
-stream = ExtResource("17_2ilni")
+stream = ExtResource("15_q6c7b")
 autoplay = true
 bus = &"Music"
 
