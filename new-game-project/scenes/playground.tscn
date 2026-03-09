@@ -17,7 +17,6 @@
 [ext_resource type="AudioStream" uid="uid://cwwsnltexsgu7" path="res://audio/impactPunch_heavy_003.ogg" id="10_62tve"]
 [ext_resource type="AudioStream" uid="uid://bum73s17ate17" path="res://audio/impactPunch_heavy_004.ogg" id="11_rdeg0"]
 [ext_resource type="AudioStream" uid="uid://b2wvf6g506ny2" path="res://audio/Future.mp3" id="15_q6c7b"]
-[ext_resource type="AudioStream" uid="uid://p7beux8imlu5" path="res://audio/Runway.wav" id="17_2ilni"]
 [ext_resource type="FontFile" uid="uid://d3xhchpjyhgoq" path="res://art/Audiowide-Regular.ttf" id="18_d3jfy"]
 [ext_resource type="Texture2D" uid="uid://7110apb2j7vm" path="res://art/BSSCTG-PLATFORM_MAGENTA.svg" id="19_q6c7b"]
 
@@ -115,30 +114,30 @@ environment = SubResource("Environment_hddm4")
 
 [node name="Object2" parent="Game" unique_id=2047639387 instance=ExtResource("2_qchbg")]
 position = Vector2(1831, 1121)
-mass = 1.2524452
-w = 513.0
-h = 129.0
-texture = ExtResource("4_mm0a5")
-
-[node name="Object3" parent="Game" unique_id=2014205349 instance=ExtResource("2_qchbg")]
-position = Vector2(443, 1254)
 mass = 1.2548981
 w = 514.0
 h = 130.0
 texture = ExtResource("4_mm0a5")
 
-[node name="Object4" parent="Game" unique_id=1847056009 instance=ExtResource("2_qchbg")]
-position = Vector2(1118, 773)
+[node name="Object3" parent="Game" unique_id=2014205349 instance=ExtResource("2_qchbg")]
+position = Vector2(443, 1254)
 mass = 1.2573586
 w = 515.0
 h = 131.0
 texture = ExtResource("4_mm0a5")
 
+[node name="Object4" parent="Game" unique_id=1847056009 instance=ExtResource("2_qchbg")]
+position = Vector2(1118, 773)
+mass = 1.2598267
+w = 516.0
+h = 132.0
+texture = ExtResource("19_q6c7b")
+
 [node name="Object5" parent="Game" unique_id=1134822862 instance=ExtResource("2_qchbg")]
 position = Vector2(1831, 427)
-mass = 1.2524452
-w = 129.0
-h = 513.0
+mass = 1.2548981
+w = 130.0
+h = 514.0
 texture = ExtResource("4_mm0a5")
 
 [node name="Camera2D" type="Camera2D" parent="Game" unique_id=1674781298]
@@ -146,7 +145,6 @@ position = Vector2(1200, 800)
 script = ExtResource("6_o6wi6")
 
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="Game" unique_id=28148514]
-stream = ExtResource("17_2ilni")
 bus = &"Music"
 
 [node name="StaticBody2D" type="StaticBody2D" parent="Game" unique_id=1450808253]
@@ -197,7 +195,6 @@ script = ExtResource("1_2ilni")
 [node name="CanvasLayer" type="CanvasLayer" parent="Ui" unique_id=1873021847]
 
 [node name="ColorRect" type="ColorRect" parent="Ui/CanvasLayer" unique_id=1715304389]
-visible = false
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
@@ -216,9 +213,9 @@ anchor_top = 1.0
 anchor_right = 1.0
 anchor_bottom = 1.0
 offset_left = -645.0
-offset_top = -190.0
+offset_top = -250.0
 offset_right = -45.0
-offset_bottom = -40.0
+offset_bottom = -100.0
 grow_horizontal = 0
 grow_vertical = 0
 theme_override_fonts/font = ExtResource("18_d3jfy")
@@ -241,9 +238,9 @@ anchors_preset = 2
 anchor_top = 1.0
 anchor_bottom = 1.0
 offset_left = 20.0
-offset_top = -190.0
+offset_top = -250.0
 offset_right = 620.0
-offset_bottom = -40.0
+offset_bottom = -100.0
 grow_vertical = 0
 theme_override_fonts/font = ExtResource("18_d3jfy")
 theme_override_font_sizes/font_size = 80
@@ -281,9 +278,9 @@ anchor_top = 1.0
 anchor_right = 0.5
 anchor_bottom = 1.0
 offset_left = -300.0
-offset_top = -190.0
+offset_top = -250.0
 offset_right = 300.0
-offset_bottom = -40.0
+offset_bottom = -100.0
 grow_horizontal = 2
 grow_vertical = 0
 theme_override_fonts/font = ExtResource("18_d3jfy")
