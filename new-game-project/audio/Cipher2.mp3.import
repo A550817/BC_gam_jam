@@ -12,8 +12,8 @@ dest_files=["res://.godot/imported/Cipher2.mp3-5bd0b8d160a80b32617efe5b1116041e.
 
 [params]
 
-loop=false
-loop_offset=0
-bpm=0
+loop=true
+loop_offset=0.0
+bpm=0.0
 beat_count=0
 bar_beats=4
