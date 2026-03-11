@@ -60,11 +60,11 @@ func physics_process(delta: float) -> PlayerState:
 	var direction = to_anchor.normalized()
 	var radialVel = player.velocity.dot(direction) * direction
 	var tangentialVel = player.velocity - radialVel
-	
+	var swing_damping: float = tether_strenght
 	var speed_mult: float = player.get_speed_multiplier()
 	var radial_pull = radial_pull_strength * speed_mult * direction * delta * 10
 	player.velocity += radial_pull
-	player.velocity += (0.2 * tangentialVel * delta)
+	player.velocity -= tangentialVel * delta * tether_strenght
 	
 	player.apply_children_scale(radial_pull.length()*0.05, tether_target)
 	if tether_target is RigidBody2D:

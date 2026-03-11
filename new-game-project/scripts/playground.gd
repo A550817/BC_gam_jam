@@ -11,7 +11,6 @@ func toggle_pause():
 		$CanvasLayer/ContinueButton.hide()
 		$CanvasLayer/BackButton.hide()
 		$CanvasLayer/Label.hide()
-		$CanvasLayer/RestartButton.hide()
 		$CanvasLayer/AnimationPlayer.play("fade_out")
 		await $CanvasLayer/AnimationPlayer.animation_finished
 		get_tree().paused = false
@@ -21,7 +20,6 @@ func toggle_pause():
 		$CanvasLayer/ContinueButton.show()
 		$CanvasLayer/BackButton.show()
 		$CanvasLayer/Label.show()
-		$CanvasLayer/RestartButton.show()
 
 	
 	is_paused = !is_paused
