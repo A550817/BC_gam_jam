@@ -59,9 +59,7 @@ script = ExtResource("2_g2els")
 [node name="TetherState" type="Node" parent="States" unique_id=129977827]
 unique_name_in_owner = true
 script = ExtResource("3_qhqgy")
-max_tether_length = 100000.0
-radial_pull_strength = 200.0
-pull_speed = 200.0
+max_tether_length = 10000.0
 
 [node name="RayCast2D" type="RayCast2D" parent="." unique_id=76674754]
 unique_name_in_owner = true

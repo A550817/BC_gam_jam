@@ -54,6 +54,10 @@ func _physics_process(delta: float) -> void:
 		var shake_amount: float = clamp(impact_force * 0.15, 6.0, 18.0)
 		$"../Camera2D".shake(shake_amount)
 		play_hit_sound(impact_force)
+		if impact_force >= 900:
+			$HitParticles.amount = 8
+		else:
+			$HitParticles.amount = 4
 		$HitParticles.global_position = global_position
 		$HitParticles.restart()
 		if collision.get_collider() is RigidBody2D:
@@ -144,6 +148,7 @@ func take_damage(velocity: Vector2):
 	var shake_amount: float = clamp(impact_force * 0.15, 6.0, 18.0)
 	
 	
+<<<<<<< HEAD
 	$"../Camera2D".shake(shake_amount)
 	$HitParticles.global_position = global_position
 	if impact_force >= 900:
@@ -151,6 +156,12 @@ func take_damage(velocity: Vector2):
 	else:
 		$HitParticles.amount = 4
 	$HitParticles.restart()
+=======
+	
+	modulate = Color(1.4, 1.4, 1.4)
+	await get_tree().create_timer(0.05).timeout
+	modulate = Color(1,1,1)
+>>>>>>> c94ecb443163647cffa7b35f233e278fbae28e76
 	
 	var base_scale := scale
 	

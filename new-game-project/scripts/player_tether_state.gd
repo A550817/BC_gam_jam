@@ -8,6 +8,7 @@ var tether_target: Node2D
 @export var radial_pull_strength: float = 100.0
 @export var pull_speed: float = 100.0
 @export var constraint_strength: float = 2
+@export_range(0.0, 10.0) var tether_strenght: float = 2
 
 # What happens when this state is initialized
 func init():
@@ -19,7 +20,6 @@ func enter() -> PlayerState:
 	ray_cast_2d.enabled = true
 	if not player.is_controller:
 		var mouse_global = player.get_global_mouse_position()
-		var mouse_vec = mouse_global
 		ray_cast_2d.target_position = (mouse_global - ray_cast_2d.global_position).normalized() * max_tether_length
 	else:
 		ray_cast_2d.target_position = player.controller_direction * max_tether_length
@@ -55,7 +55,6 @@ func process(delta: float) -> PlayerState:
 
 
 func physics_process(delta: float) -> PlayerState:
-	
 	var to_anchor = tether_point - player.global_position
 	var distance = to_anchor.length()
 	var direction = to_anchor.normalized()
