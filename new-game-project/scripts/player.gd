@@ -58,7 +58,7 @@ func _physics_process(delta: float) -> void:
 		$HitParticles.restart()
 		if collision.get_collider() is RigidBody2D:
 			collision.get_collider().apply_impulse(velocity*0.1)
-			apply_children_scale(-64, collision.get_collider())
+			apply_children_scale(-32, collision.get_collider())
 		velocity = velocity.bounce(collision.get_normal())
 		change_state(%IdleState)
 	clamp_velocity()
@@ -129,6 +129,7 @@ func _on_hitbox_body_entered(body: Node2D) -> void:
 
 
 func take_damage(velocity: Vector2):
+	
 
 	# --- Calculate impact force ---
 	var current_scale: float = scale.x
@@ -136,17 +137,14 @@ func take_damage(velocity: Vector2):
 	print(impact_force)
 	
 	# Convert impact to damage
-	var damage: int = int(impact_force * 0.02)
+	var damage: int = int(impact_force * 0.005)
 	damage = clamp(damage, 4, 30) # Prevent zero damage & absurd spikes
 	
 		# Convert impact to shake
 	var shake_amount: float = clamp(impact_force * 0.15, 6.0, 18.0)
-	Engine.time_scale = 0.0
-	await get_tree().create_timer(0.04, true, false, true).timeout
-	Engine.time_scale = 1
+	
 	
 	$"../Camera2D".shake(shake_amount)
-	play_hit_sound(impact_force)
 	$HitParticles.global_position = global_position
 	if impact_force >= 900:
 		$HitParticles.amount = 8
@@ -154,21 +152,17 @@ func take_damage(velocity: Vector2):
 		$HitParticles.amount = 4
 	$HitParticles.restart()
 	
-	
-	modulate = Color(1.4, 1.4, 1.4)
-	await get_tree().create_timer(0.05).timeout
-	modulate = Color(1,1,1)
-	
 	var base_scale := scale
 	
-	scale *= 1.1
-	await get_tree().create_timer(0.05).timeout
-	scale = base_scale
+	#scale *= 0.9
+	#await get_tree().create_timer(0.05).timeout
+	#scale = base_scale
 	
 	health -= damage
 	health = clamp(health, 0, max_health)
 	var ratio: float = float(health) / float(max_health)
-	var visual_scale: float = lerp(0.3, 1.0, ratio)
+	var visual_scale: float = lerp(0.6, 1.0, ratio)
+	modulate.a = visual_scale
 	scale = Vector2(visual_scale, visual_scale)
 	print("Health:", health, " Scale:", scale.x)
 
@@ -188,6 +182,17 @@ func update_texture():
 
 
 func resolve_combat(body: Node2D):
+	var current_scale: float = scale.x
+	var impact_force: float = velocity.length() / current_scale
+	var damage: int = int(impact_force * 0.005)
+	damage = clamp(damage, 4, 30)
+	var base_velocity = velocity
+	var base_modulate := modulate
+	modulate *= 1.5
+	velocity = Vector2(0,0)
+	await get_tree().create_timer(damage*0.0175, true, false, true).timeout
+	modulate = base_modulate
+	velocity = base_velocity
 	if body.velocity.length() < velocity.length():
 		body.take_damage(velocity)
 	elif body.velocity.length() > velocity.length():

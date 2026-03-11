@@ -77,6 +77,7 @@ shape = SubResource("CircleShape2D_qlg0r")
 debug_color = Color(0.6651312, 0.347234, 0.9440597, 0.41960785)
 
 [node name="HitPlayer" type="AudioStreamPlayer2D" parent="." unique_id=1722082896]
+volume_db = 24.0
 bus = &"SFX"
 
 [node name="HitParticles" type="GPUParticles2D" parent="." unique_id=226586591]
