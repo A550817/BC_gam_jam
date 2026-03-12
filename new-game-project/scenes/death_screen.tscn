@@ -1,0 +1,65 @@
+[gd_scene format=3 uid="uid://c08lfid0ft0md"]
+
+[ext_resource type="Script" uid="uid://cjl7jftxhidiw" path="res://scripts/death_screen.gd" id="1_7ns25"]
+[ext_resource type="FontFile" uid="uid://btm6hirbgktci" path="res://art/Orbitron Medium.otf" id="1_mqh5l"]
+[ext_resource type="Texture2D" uid="uid://bhl3yla6dwrcb" path="res://art/BSSCTG-PLAYER1.svg" id="2_7ns25"]
+[ext_resource type="FontFile" uid="uid://l2montbhasgn" path="res://art/Rajdhani-Regular.ttf" id="3_gwety"]
+[ext_resource type="FontFile" uid="uid://d3xhchpjyhgoq" path="res://art/Audiowide-Regular.ttf" id="5_wfw3d"]
+[ext_resource type="Texture2D" uid="uid://vb2vw0n2skc4" path="res://art/BSSCTG-PLATFORM_YELLOW.svg" id="6_wtkkp"]
+
+[node name="DeathScreen" type="CanvasLayer" unique_id=1794789748]
+script = ExtResource("1_7ns25")
+
+[node name="Label" type="Label" parent="." unique_id=1932391683]
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -1061.5
+offset_top = 39.0
+offset_right = 1061.5
+offset_bottom = 339.0
+grow_horizontal = 2
+theme_override_fonts/font = ExtResource("1_mqh5l")
+theme_override_font_sizes/font_size = 300
+text = "Game ended!"
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=168492145]
+position = Vector2(1240, 993)
+texture = ExtResource("2_7ns25")
+
+[node name="Label2" type="Label" parent="." unique_id=350260028]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -438.0
+offset_top = -230.0
+offset_right = 494.0
+offset_bottom = -79.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_fonts/font = ExtResource("3_gwety")
+theme_override_font_sizes/font_size = 150
+text = "Player ___ wins!"
+
+[node name="TutorialButton" type="Button" parent="." unique_id=1162969790]
+offset_left = 307.0
+offset_top = 1344.0
+offset_right = 1097.0
+offset_bottom = 1472.0
+theme_override_fonts/font = ExtResource("5_wfw3d")
+theme_override_font_sizes/font_size = 80
+text = "Restart"
+
+[node name="NinePatchRect" type="NinePatchRect" parent="TutorialButton" unique_id=984841783]
+layout_mode = 0
+offset_right = 793.0
+offset_bottom = 130.0
+texture = ExtResource("6_wtkkp")
+patch_margin_left = 17
+patch_margin_top = 19
+patch_margin_right = 18
+patch_margin_bottom = 13
+
+[connection signal="pressed" from="TutorialButton" to="." method="_on_tutorial_button_pressed"]

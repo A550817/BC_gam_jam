@@ -106,6 +106,7 @@ position = Vector2(882, 582)
 small_hit_sounds = Array[AudioStream]([ExtResource("2_j30dx"), ExtResource("3_2ilni"), ExtResource("4_d3jfy"), ExtResource("5_q6c7b"), ExtResource("6_x2tju")])
 heavy_hit_sounds = Array[AudioStream]([ExtResource("7_wm6m6"), ExtResource("8_ocmmj"), ExtResource("9_vwj6b"), ExtResource("10_62tve"), ExtResource("11_rdeg0")])
 drag_strength = 0.25
+player_id = 2
 is_controller = true
 texture = SubResource("CompressedTexture2D_q8s1k")
 

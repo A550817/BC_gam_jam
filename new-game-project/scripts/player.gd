@@ -7,6 +7,7 @@ class_name Player extends CharacterBody2D
 @export var small_hit_sounds: Array[AudioStream]
 @export var heavy_hit_sounds: Array[AudioStream]
 @export var drag_strength: float = 0.5
+@export var player_id: int = 1
 @export var speed: int = 100
 @export var is_controller: bool = false
 @export var texture: CompressedTexture2D:
@@ -33,6 +34,7 @@ var controller_direction: Vector2
 
 func _ready() -> void:
 	update_texture()
+	GameState.register_player(player_id, texture)
 	if Engine.is_editor_hint():
 		return
 	
@@ -138,25 +140,24 @@ func _on_hitbox_body_entered(body: Node2D) -> void:
 			resolve_combat(body)
 
 
-func take_damage(velocity: Vector2):
+func take_damage(player_velocity: Vector2):
 	
 
 	# --- Calculate impact force ---
 	var current_scale: float = scale.x
-	var impact_force: float = velocity.length() / current_scale
-	print(impact_force)
+	var impact_force: float = player_velocity.length() / current_scale
 	
 	# Convert impact to damage
 	var damage: int = int(impact_force * 0.005)
 	damage = clamp(damage, 4, 30) # Prevent zero damage & absurd spikes
 	
 		# Convert impact to shake
-	var shake_amount: float = clamp(impact_force * 0.15, 6.0, 18.0)
+	var shake_amount: float = clamp(impact_force / 50, 18.0, 50.0)
 	
 	
 	$"../Camera2D".shake(shake_amount)
 	$HitParticles.global_position = global_position
-	if impact_force >= 900:
+	if impact_force >= 1200:
 		$HitParticles.amount = 8
 	else:
 		$HitParticles.amount = 4
@@ -168,18 +169,20 @@ func take_damage(velocity: Vector2):
 	
 	var base_scale := scale
 	
-	#scale *= 0.9
-	#await get_tree().create_timer(0.05).timeout
-	#scale = base_scale
+	scale *= 0.9
+	await get_tree().create_timer(0.05).timeout
+	scale = base_scale
 	
 	health -= damage
-	health = clamp(health, 0, max_health)
+	health = clamp(health, 80, max_health)
+	if health == 80:
+		GameState.set_winner(player_id)
+		TransitionLayer.change_scene(load("res://scenes/death_screen.tscn"))
 	var ratio: float = float(health) / float(max_health)
 	var visual_scale: float = lerp(0.6, 1.0, ratio)
 	modulate.a = visual_scale
-	scale = Vector2(visual_scale, visual_scale)
+	scale = Vector2(ratio, ratio)
 	$TetherNode.scale = Vector2(1/visual_scale, 1/visual_scale)
-	print("Health:", health, " Scale:", scale.x)
 
 
 func apply_children_scale(scale: float, visual_scale:float, target: Node2D):
@@ -234,7 +237,7 @@ func play_hit_sound(impact_force: float):
 	var player := $HitPlayer
 	
 	var sounds: Array[AudioStream]
-	var is_heavy := impact_force > 900.0
+	var is_heavy := impact_force > 1200.0
 	
 	if is_heavy:
 		sounds = heavy_hit_sounds
