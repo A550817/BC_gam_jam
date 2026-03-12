@@ -17,6 +17,7 @@ func init():
 
 # What happens when we enter the state
 func enter() -> PlayerState:
+	$"../../TetherNode".visible = true
 	ray_cast_2d.enabled = true
 	if not player.is_controller:
 		var mouse_global = player.get_global_mouse_position()
@@ -36,7 +37,7 @@ func enter() -> PlayerState:
 
 # What happens when we exit the the state
 func exit():
-	pass
+	$"../../TetherNode".visible = false
 
 
 # Handle input
@@ -51,6 +52,12 @@ func handle_input(event: InputEvent) -> PlayerState:
 
 
 func process(delta: float) -> PlayerState:
+	var to_anchor = tether_point - player.global_position
+	
+	var distance = to_anchor.length()
+	var direction = to_anchor.normalized()
+	$"../../TetherNode".rotation = direction.angle()
+	$"../../TetherNode/Tether".size = Vector2(distance+8, 40)
 	return null
 
 
@@ -60,13 +67,12 @@ func physics_process(delta: float) -> PlayerState:
 	var direction = to_anchor.normalized()
 	var radialVel = player.velocity.dot(direction) * direction
 	var tangentialVel = player.velocity - radialVel
-	var swing_damping: float = tether_strenght
 	var speed_mult: float = player.get_speed_multiplier()
 	var radial_pull = radial_pull_strength * speed_mult * direction * delta * 10
 	player.velocity += radial_pull
 	player.velocity -= tangentialVel * delta * tether_strenght
 	
-	player.apply_children_scale(radial_pull.length()*0.05, tether_target)
+	player.apply_children_scale(radial_pull.length()*0.0125, 0, tether_target)
 	if tether_target is RigidBody2D:
 		tether_target.apply_force(-radial_pull*2)
 	

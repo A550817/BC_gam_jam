@@ -60,12 +60,18 @@ func _physics_process(delta: float) -> void:
 			$HitParticles.amount = 4
 		$HitParticles.global_position = global_position
 		$HitParticles.restart()
-		if collision.get_collider() is RigidBody2D:
-			collision.get_collider().apply_impulse(velocity*0.1)
-			apply_children_scale(-32, collision.get_collider())
 		velocity = velocity.bounce(collision.get_normal())
 		change_state(%IdleState)
 	clamp_velocity()
+	if collision:
+		if collision.get_collider() is RigidBody2D:
+			var body := collision.get_collider()
+			body.apply_impulse(velocity * 0.1)
+			apply_children_scale(-4, -16, body)
+			var timer := get_tree().create_timer(0.1)
+			timer.timeout.connect(func():
+				apply_children_scale(0, 0, body)
+			)
 	
 	
 	if Input.get_vector("aim_left", "aim_right", "aim_up", "aim_down") != Vector2.ZERO:
@@ -175,12 +181,12 @@ func take_damage(velocity: Vector2):
 	print("Health:", health, " Scale:", scale.x)
 
 
-func apply_children_scale(scale: float, target: Node2D):
+func apply_children_scale(scale: float, visual_scale:float, target: Node2D):
 	if not target:
 		return
 	
 	if target.has_method("scale_children"):
-		target.scale_children(scale)
+		target.scale_children(scale, visual_scale)
 		
 		
 func update_texture():
@@ -217,7 +223,7 @@ func get_speed_multiplier() -> float:
 
 func clamp_velocity():
 	var s: float = clamp(scale.x, 0.3, 1.0)
-	var max_speed: float = 3000.0 * pow(1.0 / s, 1.2)
+	var max_speed: float = 1500.0 * pow(1.0 / s, 1.2)
 	
 	if velocity.length() > max_speed:
 		velocity = velocity.normalized() * max_speed

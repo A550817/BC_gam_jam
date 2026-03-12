@@ -4,6 +4,7 @@
 [ext_resource type="Script" uid="uid://cp0375ep7gop8" path="res://scripts/player_idle_state.gd" id="2_g2els"]
 [ext_resource type="Script" uid="uid://b3awd12rasfrv" path="res://scripts/player_tether_state.gd" id="3_qhqgy"]
 [ext_resource type="Texture2D" uid="uid://cp72qondpi0oa" path="res://art/BSSCTG-RETICULE.svg" id="5_qlg0r"]
+[ext_resource type="Texture2D" uid="uid://crx81bkv2lmk2" path="res://art/BSSCTG-TETHER_LINE.svg" id="5_tuyoq"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_g2els"]
 radius = 40.0
@@ -60,6 +61,8 @@ script = ExtResource("2_g2els")
 unique_name_in_owner = true
 script = ExtResource("3_qhqgy")
 max_tether_length = 10000.0
+radial_pull_strength = 200.0
+tether_strenght = 1.0
 
 [node name="RayCast2D" type="RayCast2D" parent="." unique_id=76674754]
 unique_name_in_owner = true
@@ -93,5 +96,16 @@ position = Vector2(60, 0)
 rotation = 1.5707964
 scale = Vector2(0.1, 0.1)
 texture = ExtResource("5_qlg0r")
+
+[node name="TetherNode" type="Node2D" parent="." unique_id=1211805427]
+
+[node name="Tether" type="NinePatchRect" parent="TetherNode" unique_id=941626470]
+offset_left = -4.0
+offset_top = -20.0
+offset_right = 44.0
+offset_bottom = 20.0
+texture = ExtResource("5_tuyoq")
+patch_margin_left = 6
+patch_margin_right = 6
 
 [connection signal="body_entered" from="Hitbox" to="." method="_on_hitbox_body_entered"]
