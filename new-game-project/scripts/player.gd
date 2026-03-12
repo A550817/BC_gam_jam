@@ -85,7 +85,7 @@ func _process(delta: float) -> void:
 		return
 
 	var s: float = clamp(scale.x, 0.3, 1.0)
-	var max_speed: float = 3000.0 * pow(1.0 / s, 1.2)
+	var max_speed: float = 9000.0 * pow(1.0 / s, 1.2)
 	
 	if !is_controller:
 		$ReticleRotate.rotation = (get_global_mouse_position()-position).angle()
@@ -178,6 +178,7 @@ func take_damage(velocity: Vector2):
 	var visual_scale: float = lerp(0.6, 1.0, ratio)
 	modulate.a = visual_scale
 	scale = Vector2(visual_scale, visual_scale)
+	$TetherNode.scale = Vector2(1/visual_scale, 1/visual_scale)
 	print("Health:", health, " Scale:", scale.x)
 
 

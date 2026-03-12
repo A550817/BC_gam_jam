@@ -17,6 +17,7 @@
 [ext_resource type="AudioStream" uid="uid://cwwsnltexsgu7" path="res://audio/impactPunch_heavy_003.ogg" id="10_62tve"]
 [ext_resource type="AudioStream" uid="uid://bum73s17ate17" path="res://audio/impactPunch_heavy_004.ogg" id="11_rdeg0"]
 [ext_resource type="AudioStream" uid="uid://b2wvf6g506ny2" path="res://audio/Future.mp3" id="15_q6c7b"]
+[ext_resource type="Texture2D" uid="uid://7110apb2j7vm" path="res://art/BSSCTG-PLATFORM_MAGENTA.svg" id="15_x2tju"]
 [ext_resource type="FontFile" uid="uid://d3xhchpjyhgoq" path="res://art/Audiowide-Regular.ttf" id="18_d3jfy"]
 
 [sub_resource type="CompressedTexture2D" id="CompressedTexture2D_kddj0"]
@@ -116,7 +117,7 @@ position = Vector2(1831, 1121)
 mass = 1.2697754
 w = 520.0
 h = 136.0
-texture = ExtResource("4_mm0a5")
+texture = ExtResource("5_o6wi6")
 
 [node name="Object3" parent="Game" unique_id=2014205349 instance=ExtResource("2_qchbg")]
 position = Vector2(443, 1254)
@@ -130,14 +131,14 @@ position = Vector2(1118, 773)
 mass = 1.2747955
 w = 522.0
 h = 138.0
-texture = ExtResource("4_mm0a5")
+texture = ExtResource("15_x2tju")
 
 [node name="Object5" parent="Game" unique_id=1134822862 instance=ExtResource("2_qchbg")]
 position = Vector2(1831, 427)
 mass = 1.2697754
 w = 136.0
 h = 520.0
-texture = ExtResource("4_mm0a5")
+texture = ExtResource("5_o6wi6")
 
 [node name="Camera2D" type="Camera2D" parent="Game" unique_id=1674781298]
 position = Vector2(1200, 800)

@@ -61,7 +61,7 @@ script = ExtResource("2_g2els")
 unique_name_in_owner = true
 script = ExtResource("3_qhqgy")
 max_tether_length = 10000.0
-radial_pull_strength = 200.0
+radial_pull_strength = 400.0
 tether_strenght = 1.0
 
 [node name="RayCast2D" type="RayCast2D" parent="." unique_id=76674754]
@@ -98,6 +98,7 @@ scale = Vector2(0.1, 0.1)
 texture = ExtResource("5_qlg0r")
 
 [node name="TetherNode" type="Node2D" parent="." unique_id=1211805427]
+visible = false
 
 [node name="Tether" type="NinePatchRect" parent="TetherNode" unique_id=941626470]
 offset_left = -4.0
