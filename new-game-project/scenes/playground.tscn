@@ -16,15 +16,13 @@
 [ext_resource type="AudioStream" uid="uid://b4goeyt0hrl7d" path="res://audio/impactPunch_heavy_002.ogg" id="9_vwj6b"]
 [ext_resource type="AudioStream" uid="uid://cwwsnltexsgu7" path="res://audio/impactPunch_heavy_003.ogg" id="10_62tve"]
 [ext_resource type="AudioStream" uid="uid://bum73s17ate17" path="res://audio/impactPunch_heavy_004.ogg" id="11_rdeg0"]
+[ext_resource type="Texture2D" uid="uid://bax57qwcwfd5h" path="res://art/BSSCTG-PLAYER3.svg" id="12_x2tju"]
 [ext_resource type="AudioStream" uid="uid://b2wvf6g506ny2" path="res://audio/Future.mp3" id="15_q6c7b"]
 [ext_resource type="Texture2D" uid="uid://7110apb2j7vm" path="res://art/BSSCTG-PLATFORM_MAGENTA.svg" id="15_x2tju"]
 [ext_resource type="FontFile" uid="uid://d3xhchpjyhgoq" path="res://art/Audiowide-Regular.ttf" id="18_d3jfy"]
 
 [sub_resource type="CompressedTexture2D" id="CompressedTexture2D_kddj0"]
 load_path = "res://.godot/imported/BSSCTG-PLAYER1.svg-4c3a65dda90af5b9d2441c3abdb850d5.ctex"
-
-[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_q8s1k"]
-load_path = "res://.godot/imported/BSSCTG-PLAYER2.svg-79df5ff7a18105dd2cc31bdfe5df2f82.ctex"
 
 [sub_resource type="Environment" id="Environment_hddm4"]
 background_mode = 3
@@ -108,7 +106,7 @@ heavy_hit_sounds = Array[AudioStream]([ExtResource("7_wm6m6"), ExtResource("8_oc
 drag_strength = 0.25
 player_id = 2
 is_controller = true
-texture = SubResource("CompressedTexture2D_q8s1k")
+texture = ExtResource("12_x2tju")
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="Game" unique_id=152811862]
 environment = SubResource("Environment_hddm4")
