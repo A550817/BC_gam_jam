@@ -177,6 +177,10 @@ func take_damage(player_velocity: Vector2):
 	health = clamp(health, 80, max_health)
 	if health == 80:
 		GameState.set_winner(player_id)
+		Engine.time_scale = 0.1
+		await get_tree().create_timer(0.5, true, false, true).timeout
+		Engine.time_scale = 1.0
+		await get_tree().create_timer(0.5).timeout
 		TransitionLayer.change_scene(load("res://scenes/death_screen.tscn"))
 	var ratio: float = float(health) / float(max_health)
 	var visual_scale: float = lerp(0.6, 1.0, ratio)
