@@ -28,13 +28,25 @@ anchors_preset = 14
 anchor_top = 0.5
 anchor_right = 1.0
 anchor_bottom = 0.5
-offset_top = -50.0
-offset_bottom = 50.0
+offset_left = 261.0
+offset_top = -466.0
+offset_right = -244.5
+offset_bottom = 1179.0
 grow_horizontal = 2
 grow_vertical = 2
 theme_override_fonts/font = ExtResource("2_urufc")
-theme_override_font_sizes/font_size = 100
-text = "Blah blah blah (insert tutorial stuff here)"
+theme_override_font_sizes/font_size = 75
+text = "Aim:
+Hold to tether onto objects and players. Use your tether to accelerate and gain speed. The faster you hit you opponent the more damage you will deal. As you get smaller, you become faster and harder to hit.
+
+KBM
+Aim: mouse
+Tether: hold
+
+Controller
+Aim: right stick
+Tether: right shoulder"
+autowrap_mode = 3
 
 [node name="BackButton" type="Button" parent="." unique_id=1809114437]
 anchors_preset = 7

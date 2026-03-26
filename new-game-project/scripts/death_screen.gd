@@ -9,12 +9,19 @@ func _ready():
 		$Sprite2D.texture = texture
 
 	if player_id == 1:
-		$Label2.text = "Player 2 Wins!"
+		$Label.text = "Player 2 Wins!"
 	elif player_id == 2:
-		$Label2.text = "Player 1 Wins!"
+		$Label.text = "Player 1 Wins!"
 
 	GameState.reset()
 
 
-func _on_tutorial_button_pressed() -> void:
+func _on_restart_button_pressed() -> void:
+	TransitionLayer.change_scene(load("res://scenes/playground.tscn"))
+
+
+func _on_quit_button_pressed() -> void:
+	get_tree().quit()
+
+func _on_home_button_pressed() -> void:
 	TransitionLayer.change_scene(load("res://scenes/StartScreen.tscn"))

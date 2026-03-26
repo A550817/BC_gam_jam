@@ -93,14 +93,14 @@ process_mode = 1
 [node name="Game" type="Node2D" parent="." unique_id=1527273278]
 
 [node name="Player" parent="Game" unique_id=1030372719 instance=ExtResource("1_hddm4")]
-position = Vector2(491, 329)
+position = Vector2(179, 155)
 small_hit_sounds = Array[AudioStream]([ExtResource("2_j30dx"), ExtResource("3_2ilni"), ExtResource("4_d3jfy"), ExtResource("5_q6c7b"), ExtResource("6_x2tju")])
 heavy_hit_sounds = Array[AudioStream]([ExtResource("7_wm6m6"), ExtResource("8_ocmmj"), ExtResource("9_vwj6b"), ExtResource("10_62tve"), ExtResource("11_rdeg0")])
 drag_strength = 0.25
 texture = SubResource("CompressedTexture2D_kddj0")
 
 [node name="Player2" parent="Game" unique_id=388737432 instance=ExtResource("1_hddm4")]
-position = Vector2(882, 582)
+position = Vector2(2246, 1438)
 small_hit_sounds = Array[AudioStream]([ExtResource("2_j30dx"), ExtResource("3_2ilni"), ExtResource("4_d3jfy"), ExtResource("5_q6c7b"), ExtResource("6_x2tju")])
 heavy_hit_sounds = Array[AudioStream]([ExtResource("7_wm6m6"), ExtResource("8_ocmmj"), ExtResource("9_vwj6b"), ExtResource("10_62tve"), ExtResource("11_rdeg0")])
 drag_strength = 0.25
@@ -112,21 +112,23 @@ texture = ExtResource("12_x2tju")
 environment = SubResource("Environment_hddm4")
 
 [node name="Object2" parent="Game" unique_id=2047639387 instance=ExtResource("2_qchbg")]
-position = Vector2(1831, 1121)
+position = Vector2(489, 1023)
+rotation = 0.7899548
 mass = 1.2697754
 w = 520.0
 h = 136.0
 texture = ExtResource("5_o6wi6")
 
 [node name="Object3" parent="Game" unique_id=2014205349 instance=ExtResource("2_qchbg")]
-position = Vector2(443, 1254)
+position = Vector2(941, 404)
 mass = 1.2722816
 w = 521.0
 h = 137.0
 texture = ExtResource("4_mm0a5")
 
 [node name="Object4" parent="Game" unique_id=1847056009 instance=ExtResource("2_qchbg")]
-position = Vector2(1118, 773)
+position = Vector2(1350, 1155)
+rotation = -0.37163225
 mass = 1.2747955
 w = 522.0
 h = 138.0

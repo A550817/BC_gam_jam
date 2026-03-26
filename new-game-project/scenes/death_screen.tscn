@@ -3,7 +3,6 @@
 [ext_resource type="Script" uid="uid://cjl7jftxhidiw" path="res://scripts/death_screen.gd" id="1_7ns25"]
 [ext_resource type="FontFile" uid="uid://btm6hirbgktci" path="res://art/Orbitron Medium.otf" id="1_mqh5l"]
 [ext_resource type="Texture2D" uid="uid://bhl3yla6dwrcb" path="res://art/BSSCTG-PLAYER1.svg" id="2_7ns25"]
-[ext_resource type="FontFile" uid="uid://l2montbhasgn" path="res://art/Rajdhani-Regular.ttf" id="3_gwety"]
 [ext_resource type="FontFile" uid="uid://d3xhchpjyhgoq" path="res://art/Audiowide-Regular.ttf" id="5_wfw3d"]
 [ext_resource type="Texture2D" uid="uid://vb2vw0n2skc4" path="res://art/BSSCTG-PLATFORM_YELLOW.svg" id="6_wtkkp"]
 
@@ -21,38 +20,23 @@ offset_bottom = 339.0
 grow_horizontal = 2
 theme_override_fonts/font = ExtResource("1_mqh5l")
 theme_override_font_sizes/font_size = 300
-text = "Game ended!"
+text = "Player 1 wins!"
 
 [node name="Sprite2D" type="Sprite2D" parent="." unique_id=168492145]
-position = Vector2(1240, 993)
+position = Vector2(1204, 650)
 texture = ExtResource("2_7ns25")
 
-[node name="Label2" type="Label" parent="." unique_id=350260028]
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -438.0
-offset_top = -230.0
-offset_right = 494.0
-offset_bottom = -79.0
-grow_horizontal = 2
-grow_vertical = 2
-theme_override_fonts/font = ExtResource("3_gwety")
-theme_override_font_sizes/font_size = 150
-text = "Player ___ wins!"
-
-[node name="TutorialButton" type="Button" parent="." unique_id=1162969790]
-offset_left = 307.0
-offset_top = 1344.0
-offset_right = 1097.0
-offset_bottom = 1472.0
+[node name="RestartButton" type="Button" parent="." unique_id=1162969790]
+offset_left = 40.0
+offset_top = 1406.0
+offset_right = 830.0
+offset_bottom = 1534.0
+scale = Vector2(0.8, 1)
 theme_override_fonts/font = ExtResource("5_wfw3d")
 theme_override_font_sizes/font_size = 80
 text = "Restart"
 
-[node name="NinePatchRect" type="NinePatchRect" parent="TutorialButton" unique_id=984841783]
+[node name="NinePatchRect" type="NinePatchRect" parent="RestartButton" unique_id=984841783]
 layout_mode = 0
 offset_right = 793.0
 offset_bottom = 130.0
@@ -62,4 +46,46 @@ patch_margin_top = 19
 patch_margin_right = 18
 patch_margin_bottom = 13
 
-[connection signal="pressed" from="TutorialButton" to="." method="_on_tutorial_button_pressed"]
+[node name="QuitButton" type="Button" parent="." unique_id=1750455635]
+offset_left = 1560.0
+offset_top = 1399.0
+offset_right = 2350.0
+offset_bottom = 1527.0
+scale = Vector2(0.83999515, 1)
+theme_override_fonts/font = ExtResource("5_wfw3d")
+theme_override_font_sizes/font_size = 80
+text = "Quit"
+
+[node name="NinePatchRect" type="NinePatchRect" parent="QuitButton" unique_id=1775889197]
+layout_mode = 0
+offset_right = 793.0
+offset_bottom = 130.0
+texture = ExtResource("6_wtkkp")
+patch_margin_left = 17
+patch_margin_top = 19
+patch_margin_right = 18
+patch_margin_bottom = 13
+
+[node name="HomeButton" type="Button" parent="." unique_id=2073220838]
+offset_left = 784.0
+offset_top = 1402.0
+offset_right = 1574.0
+offset_bottom = 1530.0
+scale = Vector2(0.8, 1)
+theme_override_fonts/font = ExtResource("5_wfw3d")
+theme_override_font_sizes/font_size = 80
+text = "Home"
+
+[node name="NinePatchRect" type="NinePatchRect" parent="HomeButton" unique_id=687251222]
+layout_mode = 0
+offset_right = 793.0
+offset_bottom = 130.0
+texture = ExtResource("6_wtkkp")
+patch_margin_left = 17
+patch_margin_top = 19
+patch_margin_right = 18
+patch_margin_bottom = 13
+
+[connection signal="pressed" from="RestartButton" to="." method="_on_restart_button_pressed"]
+[connection signal="pressed" from="QuitButton" to="." method="_on_quit_button_pressed"]
+[connection signal="pressed" from="HomeButton" to="." method="_on_home_button_pressed"]
